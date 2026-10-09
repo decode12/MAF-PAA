@@ -1,3 +1,3 @@
 # Multi-Granular Agreement Fusion for Multimodal Misinformation Detection
 
-The source code will be made publicly available upon publication of the paper.
+Thank you for your interest in our work. The source code will be made publicly available following the publication of the paper.
