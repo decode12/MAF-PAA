@@ -8,11 +8,13 @@ Target: https://github.com/decode12/MAF-PAA
 
 Base repository commit: `dd0bf746b027daf170c752f8688aee9b755f9d95`.
 Release branch: `release/paa-reproducibility`.
-The final publication commit is recorded after anonymous remote verification. No pre-existing history is removed or force-pushed.
+Verified source-release commit: `f2cde8ffcc5ecc2478b39b097dc23f143cacf571`. Both `main` and `release/paa-reproducibility` were advanced normally from the base commit. No pre-existing history was removed or force-pushed. Later report-only commits document these completed checks.
+
+Anonymous HTTPS access to README, model source and a prediction archive succeeded with byte-identical SHA-256 hashes. An unauthenticated fresh clone of `main` retrieved the complete release. Its Git tree equals the audited local tree `6d32ea61c7959628a3a486b8cc96b5a49ded79f4`. The table and analysis reproduction commands both passed when executed from that fresh clone in the isolated environment. All 57 tracked files (about 3.4 MB) are directly available; the eight authorized compressed prediction files are included.
 
 Automatic publication review initially blocked eight per-record prediction archives. The author subsequently explicitly authorized publishing these eight sanitized archives (about 3.1 MB, containing record IDs, labels and derived model scores; no image/text content or private paths). This blocker is resolved; no rejected upload was bypassed.
 
-**Status: source release prepared; complete checkpoint-based independent reproduction remains incomplete.** The repository is publicly accessible and the connected account has push permission. Final MAF weights have been exported locally, but there is no configured local GitHub Releases or model-host upload authentication. They are not represented as already public. The connected source-control tools can publish source files but do not expose a large-release-asset upload operation.
+**Status: source release published and anonymously verified; complete checkpoint-based independent reproduction remains incomplete.** The repository is publicly accessible and the connected account has push permission. Final MAF weights have been exported locally, but there is no configured local GitHub Releases or model-host upload authentication. They are not represented as already public. The connected source-control tools can publish source files but do not expose a large-release-asset upload operation.
 
 A second unresolved item is numerical agreement between fresh CPU inference and the archived CUDA BF16 predictions. Original and cleaned implementations agree exactly on the checked CPU inputs, but the CPU outputs do not always agree with the archived GPU outputs. No GPU was used because both devices were occupied.
 
@@ -66,6 +68,8 @@ Eight final model-only assets, about 5 GB in total, are available in the maintai
 | Saved-score Figures 3/4 reproduction | PASS | 9,370 BBC predictions, all quartiles, both case records |
 | CLI/config/shell consistency | PASS | Help/import/config loading and shell syntax verified |
 | Secret/private-path/English-comment scan | PASS | Source and decompressed published prediction records |
+| Anonymous public clone and file verification | PASS | Source release commit above; model source, README and prediction archive SHA-256 checks |
+| Reproduction from the anonymous clone | PASS | Eight MAF table rows and Figures 3/4 saved-score analysis |
 | New full-split CUDA BF16 inference | NOT TESTED | Both GPUs occupied; not claimed equivalent to CPU |
 | Full 20-epoch retraining | NOT TESTED | No long training launched |
 | Cross-domain extension | NOT TESTED | No corresponding result table in current paper |
@@ -100,7 +104,7 @@ The exact sample-limited metrics are in `results/validation/cpu_inference.json`.
 
 ## PAA requirements assessment
 
-- Public readable source, configurations, official data-access and preprocessing instructions: prepared and validated; remote publication is recorded below after verification.
+- Public readable source, configurations, official data-access and preprocessing instructions: **PASS**, published and verified through an anonymous fresh clone.
 - English source comments and README: PASS.
 - Minimal final-method code with necessary checkpoint compatibility: PASS.
 - Complete public checkpoint-based reproduction: **NOT YET SATISFIED**.
@@ -109,7 +113,9 @@ The exact sample-limited metrics are in `results/validation/cpu_inference.json`.
 
 ## Suggested manuscript declarations
 
-Use the following only after the source release is publicly visible. The weight limitation is deliberately explicit.
+The source release is publicly visible. The following statements deliberately preserve the unresolved weight limitation.
+
+The manuscript Code availability declaration has been updated to link this repository and disclose that checkpoint URLs are not yet available. Two LaTeX compilation passes succeeded: 23 pages rendered, no errors and no overfull boxes. The other manuscript compilation inputs were byte-identical; PDF text outside that declaration was unchanged. Scientific results were not edited.
 
 **Code availability**
 
