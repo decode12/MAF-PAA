@@ -42,6 +42,7 @@ results/validation/cpu_inference.json
 results/validation/gradient_equivalence.json
 results/validation/independent_review.json
 results/validation/numerical_variation_review.json
+results/validation/public_checkpoint_downloads.json
 results/validation/publication_scan.json
 results/validation/real_sample_equivalence.json
 results/validation/recomputed_results.csv

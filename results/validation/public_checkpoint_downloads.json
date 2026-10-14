@@ -1,0 +1,97 @@
+{
+  "repository": "https://github.com/decode12/MAF-PAA",
+  "release": "reproducibility-v1",
+  "authentication": "none",
+  "download_script_sha256": "3deb9e829279b873feb9a7d7cffa3748620d9830bdcaf9e45f2d23f2b72b166e",
+  "assets": [
+    {
+      "name": "main_bbc",
+      "file": "main_bbc.pt",
+      "url": "https://github.com/decode12/MAF-PAA/releases/download/reproducibility-v1/main_bbc.pt",
+      "bytes": 622679694,
+      "sha256": "a911de9db336df47cc86047ad5fb7ce9c3ef53ff74674492d64af496cc09b87d",
+      "api_digest": "sha256:a911de9db336df47cc86047ad5fb7ce9c3ef53ff74674492d64af496cc09b87d",
+      "anonymous_full_download": "PASS",
+      "download_command_exit_code": 0,
+      "verified_at_utc": "2026-10-14T03:44:00.690217+00:00"
+    },
+    {
+      "name": "main_guardian",
+      "file": "main_guardian.pt",
+      "url": "https://github.com/decode12/MAF-PAA/releases/download/reproducibility-v1/main_guardian.pt",
+      "bytes": 622682154,
+      "sha256": "e2e90263fb3b54434bb435374345d0aac0f976336b23cb229de56967459553f9",
+      "api_digest": "sha256:e2e90263fb3b54434bb435374345d0aac0f976336b23cb229de56967459553f9",
+      "anonymous_full_download": "PASS",
+      "download_command_exit_code": 0,
+      "verified_at_utc": "2026-10-14T03:44:55.981657+00:00"
+    },
+    {
+      "name": "main_usa_today",
+      "file": "main_usa_today.pt",
+      "url": "https://github.com/decode12/MAF-PAA/releases/download/reproducibility-v1/main_usa_today.pt",
+      "bytes": 622682646,
+      "sha256": "78444fcdbf3deb59a0b6a9dc6728659b27d6f0ef17fa90b4ceb32df5dd0ae0ac",
+      "api_digest": "sha256:78444fcdbf3deb59a0b6a9dc6728659b27d6f0ef17fa90b4ceb32df5dd0ae0ac",
+      "anonymous_full_download": "PASS",
+      "download_command_exit_code": 0,
+      "verified_at_utc": "2026-10-14T03:45:52.070977+00:00"
+    },
+    {
+      "name": "main_washington_post",
+      "file": "main_washington_post.pt",
+      "url": "https://github.com/decode12/MAF-PAA/releases/download/reproducibility-v1/main_washington_post.pt",
+      "bytes": 622685662,
+      "sha256": "37e18098dbc4eca38b980c665034fabdeec5c5cdc71163d82a6c33132aa0bd3a",
+      "api_digest": "sha256:37e18098dbc4eca38b980c665034fabdeec5c5cdc71163d82a6c33132aa0bd3a",
+      "anonymous_full_download": "PASS",
+      "download_command_exit_code": 0,
+      "verified_at_utc": "2026-10-14T03:46:57.347617+00:00"
+    },
+    {
+      "name": "bbc_without_mgr_complete",
+      "file": "bbc_without_mgr_complete.pt",
+      "url": "https://github.com/decode12/MAF-PAA/releases/download/reproducibility-v1/bbc_without_mgr_complete.pt",
+      "bytes": 604992744,
+      "sha256": "751dfa3d3d8b0334e8c2481c893dc5a9786d3210e7a495c09a04b7edb3d61175",
+      "api_digest": "sha256:751dfa3d3d8b0334e8c2481c893dc5a9786d3210e7a495c09a04b7edb3d61175",
+      "anonymous_full_download": "PASS",
+      "download_command_exit_code": 0,
+      "verified_at_utc": "2026-10-14T03:47:52.192399+00:00"
+    },
+    {
+      "name": "bbc_without_haf_complete",
+      "file": "bbc_without_haf_complete.pt",
+      "url": "https://github.com/decode12/MAF-PAA/releases/download/reproducibility-v1/bbc_without_haf_complete.pt",
+      "bytes": 622150682,
+      "sha256": "6568b2fa3070b9f1b02419fa2693e4dff100cfcbb6fff16d3affc55048b94d2f",
+      "api_digest": "sha256:6568b2fa3070b9f1b02419fa2693e4dff100cfcbb6fff16d3affc55048b94d2f",
+      "anonymous_full_download": "PASS",
+      "download_command_exit_code": 0,
+      "verified_at_utc": "2026-10-14T03:48:49.739611+00:00"
+    },
+    {
+      "name": "bbc_without_dafo_complete",
+      "file": "bbc_without_dafo_complete.pt",
+      "url": "https://github.com/decode12/MAF-PAA/releases/download/reproducibility-v1/bbc_without_dafo_complete.pt",
+      "bytes": 622688186,
+      "sha256": "6347da42f31dc319dd616f45bf04e9593972f90793cafd5aac3a6bf5ac67fbe7",
+      "api_digest": "sha256:6347da42f31dc319dd616f45bf04e9593972f90793cafd5aac3a6bf5ac67fbe7",
+      "anonymous_full_download": "PASS",
+      "download_command_exit_code": 0,
+      "verified_at_utc": "2026-10-14T03:49:42.661580+00:00"
+    },
+    {
+      "name": "analysis_bbc",
+      "file": "analysis_bbc.pt",
+      "url": "https://github.com/decode12/MAF-PAA/releases/download/reproducibility-v1/analysis_bbc.pt",
+      "bytes": 622681662,
+      "sha256": "5a399bb5bc3ac1e2c4bbb7165457ac3498f9ea9b16073bf8e5236c495d13f049",
+      "api_digest": "sha256:5a399bb5bc3ac1e2c4bbb7165457ac3498f9ea9b16073bf8e5236c495d13f049",
+      "anonymous_full_download": "PASS",
+      "download_command_exit_code": 0,
+      "verified_at_utc": "2026-10-14T03:50:36.015865+00:00"
+    }
+  ],
+  "complete": true
+}

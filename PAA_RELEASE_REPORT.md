@@ -10,13 +10,13 @@ Base repository commit: `dd0bf746b027daf170c752f8688aee9b755f9d95`.
 Release branch: `release/paa-reproducibility`.
 Verified source-release commit: `f2cde8ffcc5ecc2478b39b097dc23f143cacf571`. Both `main` and `release/paa-reproducibility` were advanced normally from the base commit. No pre-existing history was removed or force-pushed. Later report-only commits document these completed checks.
 
-Anonymous HTTPS access to README, model source and a prediction archive succeeded with byte-identical SHA-256 hashes. An unauthenticated fresh clone of `main` retrieved the complete release. Its Git tree equals the audited local tree `6d32ea61c7959628a3a486b8cc96b5a49ded79f4`. The table and analysis reproduction commands both passed when executed from that fresh clone in the isolated environment. All 57 tracked files (about 3.4 MB) are directly available; the eight authorized compressed prediction files are included.
+Anonymous HTTPS access to README, model source and a prediction archive succeeded with byte-identical SHA-256 hashes. An unauthenticated fresh clone of `main` retrieved the complete release. Its Git tree equals the audited local tree `6d32ea61c7959628a3a486b8cc96b5a49ded79f4`. The table and analysis reproduction commands both passed when executed from that fresh clone in the isolated environment. The initial source release contained 57 tracked files (about 3.4 MB), including the eight authorized compressed prediction files. The current file inventory is maintained in `docs/RELEASE_FILES.txt`.
 
 Automatic publication review initially blocked eight per-record prediction archives. The author subsequently explicitly authorized publishing these eight sanitized archives (about 3.1 MB, containing record IDs, labels and derived model scores; no image/text content or private paths). This blocker is resolved; no rejected upload was bypassed.
 
-**Status: source release published and anonymously verified; complete checkpoint-based independent reproduction remains incomplete.** The repository is publicly accessible and the connected account has push permission. Final MAF weights have been exported locally, but there is no configured local GitHub Releases or model-host upload authentication. They are not represented as already public. The connected source-control tools can publish source files but do not expose a large-release-asset upload operation.
+**Status: source and all eight retained MAF checkpoints are publicly available and anonymously verified; complete numerical reproduction remains unresolved.** On 2026-10-14, the model-only exports were published as assets of [release `reproducibility-v1`](https://github.com/decode12/MAF-PAA/releases/tag/reproducibility-v1). Every complete anonymous asset download matched its exported SHA-256. The checkpoint manifest records public URLs, byte sizes, exported hashes and original snapshot hashes. The completed download checks are recorded in `results/validation/public_checkpoint_downloads.json`. The earlier public-download blocker has been resolved; model binaries remain outside Git history.
 
-A second unresolved item is numerical agreement between fresh CPU inference and the archived CUDA BF16 predictions. Original and cleaned implementations agree exactly on the checked CPU inputs, but the CPU outputs do not always agree with the archived GPU outputs. No GPU was used because both devices were occupied.
+The remaining unresolved item is numerical agreement between fresh CPU inference and the archived CUDA BF16 predictions. Original and cleaned implementations agree exactly on the checked CPU inputs, but the CPU outputs do not always agree with the archived GPU outputs. No GPU was used during release validation because both devices were occupied. Publishing and downloading the weights does not resolve this discrepancy.
 
 ## Files and exclusions
 
@@ -49,7 +49,7 @@ Official DGM4 access is documented in `docs/DATA.md`; the downloader pins the of
 
 The exact CLIP ViT-B/16 safetensors revision, tokenizer/config revisions, licenses and hashes are in `datasets/pretrained_assets.json` and `docs/THIRD_PARTY.md`. Independently downloaded official tokenizer/configuration files exactly matched the existing preprocessing on 32 real captions. All official image-archive directory layouts were checked with small HTTP range reads. Full multi-GB redownload was **NOT TESTED** because existing original assets were already available and checksum-audited.
 
-Eight final model-only assets, about 5 GB in total, are available in the maintainer's local release directory. Every model tensor was checked against the original checkpoint. Private arguments and optimizer state were removed. `checkpoints/manifest.json` distinguishes original snapshot SHA-256 from export SHA-256. Public asset URLs remain null until upload and anonymous verification succeed. No paid LFS allocation or inaccessible private URL is substituted.
+Eight retained model-only assets, about 5 GB in total, are publicly available through [GitHub Releases](https://github.com/decode12/MAF-PAA/releases/tag/reproducibility-v1). Every model tensor was checked against the original checkpoint. Private arguments and optimizer state were removed. `checkpoints/manifest.json` distinguishes original snapshot SHA-256 from export SHA-256 and provides the verified anonymous download URLs. Full-file anonymous download and SHA-256 verification passed for all eight exports on 2026-10-14. No paid LFS allocation or inaccessible private URL is substituted.
 
 ## Executed validation
 
@@ -74,7 +74,7 @@ Eight final model-only assets, about 5 GB in total, are available in the maintai
 | Full 20-epoch retraining | NOT TESTED | No long training launched |
 | Cross-domain extension | NOT TESTED | No corresponding result table in current paper |
 | Baseline reexecution | NOT PROVIDED / NOT TESTED | Original methods retain their own licenses |
-| Anonymous final-model download | BLOCKED | Weights not uploaded |
+| Anonymous final-model download | PASS | All eight complete public release assets; anonymous access, byte size and exported SHA-256 verified |
 
 Machine-readable evidence is in `results/validation/`. Local smoke-test paths were supplied as CLI overrides; the commands use the same public entry points documented in README.
 
@@ -92,7 +92,7 @@ python scripts/reproduce_analysis.py --output-dir outputs/analysis --verify-pape
 python scripts/download_checkpoints.py --name main_bbc
 ```
 
-The last command verified the already present local artifact; it did **not** demonstrate a public final-weight download. Other sources and all three ablation configuration/checkpoint pairs were similarly evaluated. The one-batch train test used a separate configuration with `epochs=1`, `limit_train=8` and `limit_eval=16`, and was never added to the paper's result set.
+The last command in the original source-release validation verified an already present local artifact. The subsequent public-release checks on 2026-10-14 independently downloaded all eight complete assets without authentication and verified their SHA-256 values; see `results/validation/public_checkpoint_downloads.json`. This distinction preserves the original test history. Other sources and all three ablation configuration/checkpoint pairs were similarly evaluated on CPU. The one-batch train test used a separate configuration with `epochs=1`, `limit_train=8` and `limit_eval=16`, and was never added to the paper's result set.
 
 ## Numerical comparison and unresolved discrepancy
 
@@ -107,22 +107,23 @@ The exact sample-limited metrics are in `results/validation/cpu_inference.json`.
 - Public readable source, configurations, official data-access and preprocessing instructions: **PASS**, published and verified through an anonymous fresh clone.
 - English source comments and README: PASS.
 - Minimal final-method code with necessary checkpoint compatibility: PASS.
-- Complete public checkpoint-based reproduction: **NOT YET SATISFIED**.
+- Public final-checkpoint access and integrity: **PASS**, all eight complete anonymous downloads match the manifest.
+- Complete numerical reproduction from new inference: **NOT YET ESTABLISHED**; canonical full-split CUDA BF16 validation remains required.
 - Universal reproduction of every compared baseline: **NOT CLAIMED**; published FKA-Owl and locally adapted baselines are distinguished in provenance.
-- Paper-ready claim that independent researchers can already download final weights and reproduce all numbers: **NOT SUPPORTED** until upload and canonical numeric validation are complete.
+- Independent researchers can download the retained model weights and run the documented evaluation commands. A claim that new inference has reproduced all reported numbers is **NOT SUPPORTED** until canonical numeric validation is complete.
 
-## Suggested manuscript declarations
+## Manuscript declarations
 
-The source release is publicly visible. The following statements deliberately preserve the unresolved weight limitation.
+The current manuscript identifies the public source repository and documents access to data, preprocessing, pretrained initialization, retraining, evaluation and recorded predictions. Its wording does not promise code only upon publication or claim that all model outputs have been independently reproduced. The statements below reflect that current wording. Publishing the weights does not require changing the manuscript or its prepared submission archive.
 
-The manuscript Code availability declaration has been updated to link this repository and disclose that checkpoint URLs are not yet available. Two LaTeX compilation passes succeeded: 23 pages rendered, no errors and no overfull boxes. The other manuscript compilation inputs were byte-identical; PDF text outside that declaration was unchanged. Scientific results were not edited.
+The earlier source-release declaration edit passed two LaTeX compilation passes: 23 pages rendered, no errors and no overfull boxes. This records that earlier verification; no new manuscript edit or compilation is attributed to the checkpoint upload. Scientific results were not edited.
 
 **Code availability**
 
-The source code, experimental configurations, data-preparation scripts, and recorded prediction outputs are publicly available at https://github.com/decode12/MAF-PAA. The repository documents the reproduction protocol and its current limitations. Public download links for the trained model checkpoints are not yet available.
+The MAF source code, experimental configurations, and scripts for data preparation, training, and evaluation are publicly available at https://github.com/decode12/MAF-PAA. The repository README provides environment setup instructions, links to the dataset and the pretrained initialization model, and commands for retraining and evaluating the source-specific models and module ablations. Recorded prediction outputs supporting the reported MAF results are also provided in this repository.
 
 **Data availability**
 
-The experiments in this study used the publicly available DGM4 dataset, accessible through the original authors' repository at https://github.com/rshaojimmy/MultiModal-DeepFake. The code repository provides instructions and scripts for reconstructing the original source-specific partitions. Dataset access and use are subject to the original providers' terms. No new dataset was collected or created in this study.
+The experiments in this study used the publicly available DGM4 dataset, accessible through the original authors' repository at https://github.com/rshaojimmy/MultiModal-DeepFake. Dataset download instructions, preprocessing scripts, and procedures for reconstructing the source-specific training, validation, and test partitions are provided in the MAF repository at https://github.com/decode12/MAF-PAA. Dataset access and use are subject to the original providers' terms. No new dataset was collected or created in this study.
 
-Retain the manuscript's formal DGM4 citation when inserting this text. Do not state that complete checkpoint-based reproducibility has been achieved while the listed blockers remain.
+Retain the manuscript's formal DGM4 citation when inserting this text. Public artifact availability and new-inference numerical agreement are separate checks; do not claim complete numerical reproduction while the recorded discrepancy remains unresolved.

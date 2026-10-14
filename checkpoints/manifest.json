@@ -8,10 +8,11 @@
     "selected_epoch": 17,
     "ablation": "full",
     "model_tensors_identical": true,
-    "url": null,
-    "public_download_status": "NOT_UPLOADED",
+    "url": "https://github.com/decode12/MAF-PAA/releases/download/reproducibility-v1/main_bbc.pt",
+    "public_download_status": "VERIFIED_PUBLIC",
     "source": "bbc",
-    "seed": 42
+    "seed": 42,
+    "public_download_verified_at_utc": "2026-10-14T03:44:00.690217+00:00"
   },
   {
     "name": "main_guardian",
@@ -22,10 +23,11 @@
     "selected_epoch": 19,
     "ablation": "full",
     "model_tensors_identical": true,
-    "url": null,
-    "public_download_status": "NOT_UPLOADED",
+    "url": "https://github.com/decode12/MAF-PAA/releases/download/reproducibility-v1/main_guardian.pt",
+    "public_download_status": "VERIFIED_PUBLIC",
     "source": "guardian",
-    "seed": 42
+    "seed": 42,
+    "public_download_verified_at_utc": "2026-10-14T03:44:55.981657+00:00"
   },
   {
     "name": "main_usa_today",
@@ -36,10 +38,11 @@
     "selected_epoch": 19,
     "ablation": "full",
     "model_tensors_identical": true,
-    "url": null,
-    "public_download_status": "NOT_UPLOADED",
+    "url": "https://github.com/decode12/MAF-PAA/releases/download/reproducibility-v1/main_usa_today.pt",
+    "public_download_status": "VERIFIED_PUBLIC",
     "source": "usa_today",
-    "seed": 42
+    "seed": 42,
+    "public_download_verified_at_utc": "2026-10-14T03:45:52.070977+00:00"
   },
   {
     "name": "main_washington_post",
@@ -50,10 +53,11 @@
     "selected_epoch": 19,
     "ablation": "full",
     "model_tensors_identical": true,
-    "url": null,
-    "public_download_status": "NOT_UPLOADED",
+    "url": "https://github.com/decode12/MAF-PAA/releases/download/reproducibility-v1/main_washington_post.pt",
+    "public_download_status": "VERIFIED_PUBLIC",
     "source": "washington_post",
-    "seed": 42
+    "seed": 42,
+    "public_download_verified_at_utc": "2026-10-14T03:46:57.347617+00:00"
   },
   {
     "name": "bbc_without_mgr_complete",
@@ -64,10 +68,11 @@
     "selected_epoch": 19,
     "ablation": "without_mgr_complete",
     "model_tensors_identical": true,
-    "url": null,
-    "public_download_status": "NOT_UPLOADED",
+    "url": "https://github.com/decode12/MAF-PAA/releases/download/reproducibility-v1/bbc_without_mgr_complete.pt",
+    "public_download_status": "VERIFIED_PUBLIC",
     "source": "bbc",
-    "seed": 42
+    "seed": 42,
+    "public_download_verified_at_utc": "2026-10-14T03:47:52.192399+00:00"
   },
   {
     "name": "bbc_without_haf_complete",
@@ -78,10 +83,11 @@
     "selected_epoch": 15,
     "ablation": "without_haf_complete",
     "model_tensors_identical": true,
-    "url": null,
-    "public_download_status": "NOT_UPLOADED",
+    "url": "https://github.com/decode12/MAF-PAA/releases/download/reproducibility-v1/bbc_without_haf_complete.pt",
+    "public_download_status": "VERIFIED_PUBLIC",
     "source": "bbc",
-    "seed": 42
+    "seed": 42,
+    "public_download_verified_at_utc": "2026-10-14T03:48:49.739611+00:00"
   },
   {
     "name": "bbc_without_dafo_complete",
@@ -92,10 +98,11 @@
     "selected_epoch": 10,
     "ablation": "without_dafo_complete",
     "model_tensors_identical": true,
-    "url": null,
-    "public_download_status": "NOT_UPLOADED",
+    "url": "https://github.com/decode12/MAF-PAA/releases/download/reproducibility-v1/bbc_without_dafo_complete.pt",
+    "public_download_status": "VERIFIED_PUBLIC",
     "source": "bbc",
-    "seed": 42
+    "seed": 42,
+    "public_download_verified_at_utc": "2026-10-14T03:49:42.661580+00:00"
   },
   {
     "name": "analysis_bbc",
@@ -106,9 +113,10 @@
     "selected_epoch": 4,
     "ablation": "full",
     "model_tensors_identical": true,
-    "url": null,
-    "public_download_status": "NOT_UPLOADED",
+    "url": "https://github.com/decode12/MAF-PAA/releases/download/reproducibility-v1/analysis_bbc.pt",
+    "public_download_status": "VERIFIED_PUBLIC",
     "source": "bbc",
-    "seed": 42
+    "seed": 42,
+    "public_download_verified_at_utc": "2026-10-14T03:50:36.015865+00:00"
   }
 ]

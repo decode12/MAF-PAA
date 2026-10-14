@@ -2,7 +2,7 @@
 
 MAF combines multi-granular representation (MGR), head-agreement fusion (HAF), and dual-tail annotation-aware focal optimization (DAFO) for binary manipulation detection on DGM4. This repository contains the implementation and configurations corresponding to the current manuscript submitted to **Pattern Analysis and Applications**.
 
-**Release status:** the final-method source, exact split reconstruction, audited results and frozen prediction records are available. Final model tensors have been exported and verified locally, but **public checkpoint uploads are not yet complete**. Check `checkpoints/manifest.json` before attempting checkpoint downloads. Saved-prediction metric reproduction and fresh training do not require the final checkpoints. Do not interpret an unpublished weight URL as an available download.
+**Release status:** the final-method source, exact split reconstruction, audited results, frozen prediction records and all eight retained MAF checkpoints are publicly available. Checkpoints are distributed through [GitHub Releases](https://github.com/decode12/MAF-PAA/releases/tag/reproducibility-v1); their anonymous downloads have been verified against the SHA-256 values in `checkpoints/manifest.json`. Fresh training does not require these trained checkpoints. Public artifact availability does not resolve the numerical discrepancy between new CPU inference and archived CUDA BF16 predictions, documented below.
 
 The main results use **seed 42, fresh 20-epoch training, and separate training for each of four news sources**. Historical five-epoch seeds 43/44 are not the current main results. Figures 3 and 4 use a separate earlier BBC checkpoint, documented explicitly below. See [the audit](REPRODUCIBILITY_AUDIT.md), [the protocol](docs/REPRODUCIBILITY.md), and [release validation](PAA_RELEASE_REPORT.md).
 
@@ -72,7 +72,7 @@ python datasets/download_assets.py --asset clip --output pretrained/clip-vit-bas
 
 The model safetensors revision and all hashes are in `datasets/pretrained_assets.json`; no moving model alias is used by the default configuration. CLIP is jointly fine-tuned, with no frozen-feature cache.
 
-Final MAF download status and hashes are in [checkpoints/README.md](checkpoints/README.md). Once a verified public URL exists in the manifest, use:
+All eight retained MAF checkpoints are available in [the model release](https://github.com/decode12/MAF-PAA/releases/tag/reproducibility-v1). Their purposes, sizes, and download links are in [checkpoints/README.md](checkpoints/README.md); exact SHA-256 values are in `checkpoints/manifest.json`. Download and verify a selected model, or all eight:
 
 ```bash
 python scripts/download_checkpoints.py --name main_bbc
@@ -80,7 +80,7 @@ python scripts/download_checkpoints.py --name main_bbc
 python scripts/download_checkpoints.py --name all
 ```
 
-Until uploads are complete these commands deliberately stop for missing weights, rather than fetching an unrelated model. Local checkpoint exports contain identical original model tensors and portable metadata, without optimizer state or private paths. Their file hashes differ from the original training snapshots; both hashes are recorded.
+The downloader checks each file against the manifest and also verifies any existing local file before reusing it. Checkpoint exports contain identical original model tensors and portable metadata, without optimizer state or private paths. Their file hashes differ from the original training snapshots; both hashes are recorded. A successful download check establishes artifact integrity, not agreement of a new inference run with the historical predictions.
 
 ## Evaluate a fixed model
 
@@ -168,7 +168,7 @@ ACC uses probability >=0.5; AUC uses continuous manipulation probabilities; EER 
 
 ## Reproducibility limitations
 
-- Public final-weight uploads remain incomplete until the checkpoint manifest contains verified URLs. This is a real release blocker for independent checkpoint inference.
+- All retained MAF checkpoints are publicly downloadable and checksum-verified. New full-split CUDA BF16 agreement with the archived predictions remains unresolved; public availability does not establish numerical equivalence.
 - Current results are seed 42. Existing historical seeds 43/44 used a different five-epoch protocol and are excluded.
 - Figures 3/4 use the separately identified earlier model, not the current main model.
 - Earlier development accessed the designated test split; complete project-wide test independence cannot be established retrospectively.
