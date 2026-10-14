@@ -1,0 +1,93 @@
+[
+  {
+    "run_id": "ablation_without_dafo_complete",
+    "samples": 32,
+    "scope": "first ordered test records only",
+    "precision": "CPU FP32 versus archived CUDA BF16",
+    "ACC_percent_cpu_subset": 84.375,
+    "ACC_percent_archived_same_subset": 87.5,
+    "prediction_disagreements": 1,
+    "max_absolute_probability_difference": 0.3132784366607666,
+    "selected_epoch": 10,
+    "real_checkpoint_inference": "PASS",
+    "full_split_rerun": "NOT TESTED"
+  },
+  {
+    "run_id": "ablation_without_haf_complete",
+    "samples": 32,
+    "scope": "first ordered test records only",
+    "precision": "CPU FP32 versus archived CUDA BF16",
+    "ACC_percent_cpu_subset": 84.375,
+    "ACC_percent_archived_same_subset": 84.375,
+    "prediction_disagreements": 0,
+    "max_absolute_probability_difference": 0.07284194231033325,
+    "selected_epoch": 15,
+    "real_checkpoint_inference": "PASS",
+    "full_split_rerun": "NOT TESTED"
+  },
+  {
+    "run_id": "ablation_without_mgr_complete",
+    "samples": 32,
+    "scope": "first ordered test records only",
+    "precision": "CPU FP32 versus archived CUDA BF16",
+    "ACC_percent_cpu_subset": 87.5,
+    "ACC_percent_archived_same_subset": 87.5,
+    "prediction_disagreements": 0,
+    "max_absolute_probability_difference": 0.001475429889978841,
+    "selected_epoch": 19,
+    "real_checkpoint_inference": "PASS",
+    "full_split_rerun": "NOT TESTED"
+  },
+  {
+    "run_id": "main_bbc",
+    "samples": 64,
+    "scope": "first ordered test records only",
+    "precision": "CPU FP32 versus archived CUDA BF16",
+    "ACC_percent_cpu_subset": 89.0625,
+    "ACC_percent_archived_same_subset": 89.0625,
+    "prediction_disagreements": 0,
+    "max_absolute_probability_difference": 0.05999334156513214,
+    "selected_epoch": 17,
+    "real_checkpoint_inference": "PASS",
+    "full_split_rerun": "NOT TESTED"
+  },
+  {
+    "run_id": "main_guardian",
+    "samples": 64,
+    "scope": "first ordered test records only",
+    "precision": "CPU FP32 versus archived CUDA BF16",
+    "ACC_percent_cpu_subset": 87.5,
+    "ACC_percent_archived_same_subset": 85.9375,
+    "prediction_disagreements": 1,
+    "max_absolute_probability_difference": 0.8857120648026466,
+    "selected_epoch": 19,
+    "real_checkpoint_inference": "PASS",
+    "full_split_rerun": "NOT TESTED"
+  },
+  {
+    "run_id": "main_usa_today",
+    "samples": 64,
+    "scope": "first ordered test records only",
+    "precision": "CPU FP32 versus archived CUDA BF16",
+    "ACC_percent_cpu_subset": 87.5,
+    "ACC_percent_archived_same_subset": 85.9375,
+    "prediction_disagreements": 1,
+    "max_absolute_probability_difference": 0.41227489802986383,
+    "selected_epoch": 19,
+    "real_checkpoint_inference": "PASS",
+    "full_split_rerun": "NOT TESTED"
+  },
+  {
+    "run_id": "main_washington_post",
+    "samples": 64,
+    "scope": "first ordered test records only",
+    "precision": "CPU FP32 versus archived CUDA BF16",
+    "ACC_percent_cpu_subset": 79.6875,
+    "ACC_percent_archived_same_subset": 79.6875,
+    "prediction_disagreements": 0,
+    "max_absolute_probability_difference": 0.03889098018407822,
+    "selected_epoch": 19,
+    "real_checkpoint_inference": "PASS",
+    "full_split_rerun": "NOT TESTED"
+  }
+]

@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "dataset": "rshaojimmy/DGM4",
+  "official_revision": "9efd3f1ca14cb1dac1692cdce0beea6844b968a6",
+  "split_policy": "Original metadata partitions; stable filter by VisualNews id-to-source; no resplit or deduplication",
+  "record_digest_encoding": "UTF-8 canonical JSON per record, sorted keys, compact separators, newline terminator, original order",
+  "id_digest_encoding": "UTF-8 str(id) followed by newline, original order, duplicates retained",
+  "state_order": [
+    "Real",
+    "Text-only",
+    "Image-only",
+    "Joint"
+  ],
+  "binary_labels": {
+    "Real": 0,
+    "Manipulated": 1
+  },
+  "inputs": {
+    "VisualNews/data.json": {
+      "sha256": "642a28a0065e3a14d6ba74c23ec2b516710086a4df8e6b204d44095ff94f5caf"
+    },
+    "DGM4/metadata/train.json": {
+      "sha256": "dafd4fe101d3de63b433759fae79b14b465294f7be73f26c9f3bb13b8de87704",
+      "count": 208184
+    },
+    "DGM4/metadata/val.json": {
+      "sha256": "d4377ecc19cb6528e36c77401482cbfffaa57977faee2c6124e3b1bdda045520",
+      "count": 22126
+    },
+    "DGM4/metadata/test.json": {
+      "sha256": "b58b29c4cf0f40cdf791189181ad57821f9359e358e93683cc702db3a41c0a18",
+      "count": 50705
+    }
+  },
+  "source_metadata_mode": "provided_id_to_source",
+  "sources": {
+    "bbc": {
+      "train": {
+        "count": 40811,
+        "unique_ids": 10423,
+        "state_counts": {
+          "Real": 20436,
+          "Text-only": 2916,
+          "Image-only": 13007,
+          "Joint": 4452
+        },
+        "binary_counts": {
+          "Real": 20436,
+          "Manipulated": 20375
+        },
+        "ordered_ids_sha256": "747d740efbfdddacc5ff20ab092511ba8b0e51411cda183ebffa3429a996cd28",
+        "ordered_records_sha256": "8d2da55e97a49384a6db3250854b8870b977635ea53764901f0488f5586d6e55"
+      },
+      "val": {
+        "count": 4424,
+        "unique_ids": 1502,
+        "state_counts": {
+          "Real": 1490,
+          "Text-only": 412,
+          "Image-only": 1858,
+          "Joint": 664
+        },
+        "binary_counts": {
+          "Real": 1490,
+          "Manipulated": 2934
+        },
+        "ordered_ids_sha256": "fef8d4930c0cae1366ac6de500591569ba6a8ebd576c3969bfcdd3d00bb352ba",
+        "ordered_records_sha256": "0d76722e8ffdd1f5339ccbd4ae1f18ef5cab40aacf95ce4eee63036d171743ac"
+      },
+      "test": {
+        "count": 9370,
+        "unique_ids": 3175,
+        "state_counts": {
+          "Real": 3156,
+          "Text-only": 930,
+          "Image-only": 3873,
+          "Joint": 1411
+        },
+        "binary_counts": {
+          "Real": 3156,
+          "Manipulated": 6214
+        },
+        "ordered_ids_sha256": "0ee6d5cfc1c68d514ac8c0c00ad9e3be399d8927b8c555a94193c1764cf63f74",
+        "ordered_records_sha256": "55cea87f02d065168a6ec4fb0c29f07a13f651dcc4cc74827eb6a7df9de015b3"
+      }
+    },
+    "guardian": {
+      "train": {
+        "count": 109703,
+        "unique_ids": 29447,
+        "state_counts": {
+          "Real": 55459,
+          "Text-only": 10315,
+          "Image-only": 32005,
+          "Joint": 11924
+        },
+        "binary_counts": {
+          "Real": 55459,
+          "Manipulated": 54244
+        },
+        "ordered_ids_sha256": "18b25b60600720d4ca0e1cb4ea5fd7f898be5f7728b83798080969408a78f06a",
+        "ordered_records_sha256": "6ea21fa02caf892968098bc4fed22c36a0611262ded2605100ff6930be3738fc"
+      },
+      "val": {
+        "count": 11685,
+        "unique_ids": 4157,
+        "state_counts": {
+          "Real": 3979,
+          "Text-only": 1443,
+          "Image-only": 4570,
+          "Joint": 1693
+        },
+        "binary_counts": {
+          "Real": 3979,
+          "Manipulated": 7706
+        },
+        "ordered_ids_sha256": "ad5d7d217e47b4cfd089089845fa600155c27bdd5e93f14c7471663d39a09224",
+        "ordered_records_sha256": "06ffb14fcb2dc07e5af23b8bddf0d6b7f1003b6469f1e8b8e15a8af4e2859720"
+      },
+      "test": {
+        "count": 27028,
+        "unique_ids": 9557,
+        "state_counts": {
+          "Real": 9109,
+          "Text-only": 3619,
+          "Image-only": 10126,
+          "Joint": 4174
+        },
+        "binary_counts": {
+          "Real": 9109,
+          "Manipulated": 17919
+        },
+        "ordered_ids_sha256": "a2e470e4595fc2cd7027718e75d49fa4344b8f280d2077caac8133e580a8f9b8",
+        "ordered_records_sha256": "9fd2d3d3ed33ebc4ebb692d61d1e70a64f61bbb1f91025e9cbf2b74a16d13b25"
+      }
+    },
+    "usa_today": {
+      "train": {
+        "count": 31811,
+        "unique_ids": 9556,
+        "state_counts": {
+          "Real": 15472,
+          "Text-only": 3938,
+          "Image-only": 9244,
+          "Joint": 3157
+        },
+        "binary_counts": {
+          "Real": 15472,
+          "Manipulated": 16339
+        },
+        "ordered_ids_sha256": "a81ad108b9992bddba458373b24a9c0004a6fad1342fd871fef445695dba2c9d",
+        "ordered_records_sha256": "2dbeed57c39bac1d62040bcc2179d156e94a37ceb4eea27616d2fffa19be56a0"
+      },
+      "val": {
+        "count": 2917,
+        "unique_ids": 1157,
+        "state_counts": {
+          "Real": 975,
+          "Text-only": 454,
+          "Image-only": 1126,
+          "Joint": 362
+        },
+        "binary_counts": {
+          "Real": 975,
+          "Manipulated": 1942
+        },
+        "ordered_ids_sha256": "4379a3418538c6939d43910cb6a9da9df72bb2c8523dbdc9b2f14ab4d2e2899f",
+        "ordered_records_sha256": "bb3a99a637cc09d8d71b930e7084d75363a3676fee0cd0badde5815a9dfb411b"
+      },
+      "test": {
+        "count": 7926,
+        "unique_ids": 3167,
+        "state_counts": {
+          "Real": 2533,
+          "Text-only": 1407,
+          "Image-only": 2939,
+          "Joint": 1047
+        },
+        "binary_counts": {
+          "Real": 2533,
+          "Manipulated": 5393
+        },
+        "ordered_ids_sha256": "01cc391641a95de025e3681e2c5550893e97fb53a6fdd7446b16b69b4babfbaa",
+        "ordered_records_sha256": "608ab242027da2d47ded287298adf0cf060de595a1458ec293457d4be10dfd18"
+      }
+    },
+    "washington_post": {
+      "train": {
+        "count": 25859,
+        "unique_ids": 7468,
+        "state_counts": {
+          "Real": 12725,
+          "Text-only": 2628,
+          "Image-only": 7961,
+          "Joint": 2545
+        },
+        "binary_counts": {
+          "Real": 12725,
+          "Manipulated": 13134
+        },
+        "ordered_ids_sha256": "b3e51b846c20d97ce258ba1c9282dd6b2f8874d55493b2e8295236f159f5e395",
+        "ordered_records_sha256": "c351086472909ade6ad3c4c93730aee36a56bca20c203cf2f6c338dfcc0626e1"
+      },
+      "val": {
+        "count": 3100,
+        "unique_ids": 1159,
+        "state_counts": {
+          "Real": 1029,
+          "Text-only": 410,
+          "Image-only": 1233,
+          "Joint": 428
+        },
+        "binary_counts": {
+          "Real": 1029,
+          "Manipulated": 2071
+        },
+        "ordered_ids_sha256": "79f15971cca8d847c71fb4fffc8d9c571919205aa9e6e529faaa9f886abab6fd",
+        "ordered_records_sha256": "fcecbbbdffc010070329eee810c30682c3eec51924c44fc5536d4c454195495d"
+      },
+      "test": {
+        "count": 6381,
+        "unique_ids": 2461,
+        "state_counts": {
+          "Real": 2078,
+          "Text-only": 969,
+          "Image-only": 2498,
+          "Joint": 836
+        },
+        "binary_counts": {
+          "Real": 2078,
+          "Manipulated": 4303
+        },
+        "ordered_ids_sha256": "0c39f9fadf5d414efbe61abc64f8354a5d05d963d0883deb6712446057fe3b36",
+        "ordered_records_sha256": "9d1ce7249adc02bc295c2c4c6eb6abfb53f9b17ac13523b552212284ccd3bcd9"
+      }
+    }
+  },
+  "used_source_mapping": {
+    "unique_ids": 83229,
+    "sha256": "e6f00c11e09e2d18e0d5873a779ebb704fb687704a6f8fb0252622f8b59aff9b"
+  },
+  "cross_split_id_overlap": {
+    "train/val": 0,
+    "train/test": 0,
+    "val/test": 0
+  }
+}

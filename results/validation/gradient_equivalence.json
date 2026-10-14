@@ -1,0 +1,22 @@
+{
+  "full": {
+    "cpu_synthetic_initialization_rng": "PASS",
+    "cpu_synthetic_eval_outputs_loss_gradient": "PASS",
+    "cpu_synthetic_train_outputs_loss_gradient_rng": "PASS"
+  },
+  "without_mgr_complete": {
+    "cpu_synthetic_initialization_rng": "PASS",
+    "cpu_synthetic_eval_outputs_loss_gradient": "PASS",
+    "cpu_synthetic_train_outputs_loss_gradient_rng": "PASS"
+  },
+  "without_haf_complete": {
+    "cpu_synthetic_initialization_rng": "PASS",
+    "cpu_synthetic_eval_outputs_loss_gradient": "PASS",
+    "cpu_synthetic_train_outputs_loss_gradient_rng": "PASS"
+  },
+  "without_dafo_complete": {
+    "cpu_synthetic_initialization_rng": "PASS",
+    "cpu_synthetic_eval_outputs_loss_gradient": "PASS",
+    "cpu_synthetic_train_outputs_loss_gradient_rng": "PASS"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "repository": "rshaojimmy/DGM4",
+  "revision": "9efd3f1ca14cb1dac1692cdce0beea6844b968a6",
+  "files": {
+    "manipulation/HFGI.zip": {
+      "bytes": 1432870701,
+      "sha256": "6424944272ae58193fd64404d3e1bcf3dd0cd268f01d4a4af5b6d29b198c5ced",
+      "url": "https://huggingface.co/datasets/rshaojimmy/DGM4/resolve/9efd3f1ca14cb1dac1692cdce0beea6844b968a6/manipulation/HFGI.zip"
+    },
+    "manipulation/StyleCLIP.zip": {
+      "bytes": 1429202710,
+      "sha256": "2a712d3889823621766f0200e0ddc343b11b202d08f52b0589354de8f00a87dc",
+      "url": "https://huggingface.co/datasets/rshaojimmy/DGM4/resolve/9efd3f1ca14cb1dac1692cdce0beea6844b968a6/manipulation/StyleCLIP.zip"
+    },
+    "manipulation/infoswap.zip": {
+      "bytes": 2035798675,
+      "sha256": "e2119a760551c44f5a9da2e601c5d902bde75eb97e91f073df2a5a7107e57769",
+      "url": "https://huggingface.co/datasets/rshaojimmy/DGM4/resolve/9efd3f1ca14cb1dac1692cdce0beea6844b968a6/manipulation/infoswap.zip"
+    },
+    "manipulation/simswap.zip": {
+      "bytes": 1385353213,
+      "sha256": "7fbc0e606eb6eec0b7541ce71dc92d020e4677adeb3f71b5ec89e335a33a2465",
+      "url": "https://huggingface.co/datasets/rshaojimmy/DGM4/resolve/9efd3f1ca14cb1dac1692cdce0beea6844b968a6/manipulation/simswap.zip"
+    },
+    "metadata/test.json": {
+      "bytes": 36769032,
+      "sha256": "b58b29c4cf0f40cdf791189181ad57821f9359e358e93683cc702db3a41c0a18",
+      "url": "https://huggingface.co/datasets/rshaojimmy/DGM4/resolve/9efd3f1ca14cb1dac1692cdce0beea6844b968a6/metadata/test.json"
+    },
+    "metadata/train.json": {
+      "bytes": 144878709,
+      "sha256": "dafd4fe101d3de63b433759fae79b14b465294f7be73f26c9f3bb13b8de87704",
+      "url": "https://huggingface.co/datasets/rshaojimmy/DGM4/resolve/9efd3f1ca14cb1dac1692cdce0beea6844b968a6/metadata/train.json"
+    },
+    "metadata/val.json": {
+      "bytes": 15985338,
+      "sha256": "d4377ecc19cb6528e36c77401482cbfffaa57977faee2c6124e3b1bdda045520",
+      "url": "https://huggingface.co/datasets/rshaojimmy/DGM4/resolve/9efd3f1ca14cb1dac1692cdce0beea6844b968a6/metadata/val.json"
+    },
+    "origin/bbc.zip": {
+      "bytes": 1374451578,
+      "sha256": "f0bcb036bb11016802b0d7eea202820d61376372045d1e24b86d9b8d0c19d449",
+      "url": "https://huggingface.co/datasets/rshaojimmy/DGM4/resolve/9efd3f1ca14cb1dac1692cdce0beea6844b968a6/origin/bbc.zip"
+    },
+    "origin/guardian.zip": {
+      "bytes": 1893273813,
+      "sha256": "78b7c05830742dc8ae23c0bbc32d4383bcbcb19647bd513fd854a6826576c4fd",
+      "url": "https://huggingface.co/datasets/rshaojimmy/DGM4/resolve/9efd3f1ca14cb1dac1692cdce0beea6844b968a6/origin/guardian.zip"
+    },
+    "origin/usa_today.zip": {
+      "bytes": 572095335,
+      "sha256": "0cc27827eeaac0483eaab12b4bb58989dc6ba360ce07be6b83c59717bdca0991",
+      "url": "https://huggingface.co/datasets/rshaojimmy/DGM4/resolve/9efd3f1ca14cb1dac1692cdce0beea6844b968a6/origin/usa_today.zip"
+    },
+    "origin/washington_post.zip": {
+      "bytes": 405746497,
+      "sha256": "c7b7cf1dd358c51d1ee76fd4c5e9d691b16ca20a498b9c08718a9378186befcf",
+      "url": "https://huggingface.co/datasets/rshaojimmy/DGM4/resolve/9efd3f1ca14cb1dac1692cdce0beea6844b968a6/origin/washington_post.zip"
+    }
+  }
+}

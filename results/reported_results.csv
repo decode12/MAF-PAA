@@ -1,0 +1,25 @@
+table,domain,method,run_id,seed,split,ACC_percent,AUC_percent,EER_percent,checkpoint_name,checkpoint_sha256,evidence_kind
+2,bbc,HAMMER,,42,test,77.84,85.54,21.95,,b8ec4df375cd90595a397657d64079d141ba929eba5e932da0430f893e711114,recorded_local_baseline_not_reexecuted_in_release
+2,bbc,HAMMER++,,42,test,77.58,85.03,23.27,,d6bb7a04c11137b08f08e24c8249214968e8dc8659124dd1cb358bceacfcc82f,recorded_local_baseline_not_reexecuted_in_release
+2,bbc,FKA-Owl,,,published intra-domain test,81.55,89.61,18.61,,,cited_publication_not_locally_reproduced
+2,bbc,ALBEF,,42,test,78.60,87.95,20.60,,d78f09107a30afc0731a259ad4454057cf6c7c0d7595c6f7ca4e83c8561d2716,recorded_local_baseline_not_reexecuted_in_release
+2,bbc,MAF,main_bbc,42,test,86.00,91.16,14.54,main_bbc,4dbef5a2da2f1435c6f4dd2b4208e4289929bc7c783f36c3bd1b2dcaf124c824,local_checkpoint_saved_predictions_verified
+2,guardian,HAMMER,,42,test,87.05,93.90,13.58,,769f8692051aa60b61222223e082f11e539d4de0e7f6a774ec1dc4c02fe6fe43,recorded_local_baseline_not_reexecuted_in_release
+2,guardian,HAMMER++,,42,test,84.89,92.88,15.18,,06295ff595d92ac26fcec9c9dc3caf5c60d91640eb9196fd45a894f711f0f40c,recorded_local_baseline_not_reexecuted_in_release
+2,guardian,FKA-Owl,,,published intra-domain test,86.60,93.93,13.38,,,cited_publication_not_locally_reproduced
+2,guardian,ALBEF,,42,test,85.42,93.19,15.01,,4257ce692922c7ab72ea0932a43deb70ba5bcac8ba1a44d59c75f1268bee7f2f,recorded_local_baseline_not_reexecuted_in_release
+2,guardian,MAF,main_guardian,42,test,89.64,94.49,10.66,main_guardian,99c87fa3099a309408c0be6c34821b19ac3a8ec2b23dea740dbe87b574a63031,local_checkpoint_saved_predictions_verified
+2,usa_today,HAMMER,,42,test,77.79,84.56,23.40,,044a9538b7710775ede1e6fe8b1cb60610ad7f71a9e4da758ccf652683ae3f9e,recorded_local_baseline_not_reexecuted_in_release
+2,usa_today,HAMMER++,,42,test,76.87,82.22,25.89,,7e2dc1d0f0cab60a4a077414cee8d883e420165a49f6c9327d24f5356602e725,recorded_local_baseline_not_reexecuted_in_release
+2,usa_today,FKA-Owl,,,published intra-domain test,80.96,89.64,18.69,,,cited_publication_not_locally_reproduced
+2,usa_today,ALBEF,,42,test,77.42,84.14,23.85,,9afbe7d56edf80c7a0c580cf390eacd6f45f2be4d2da8ead9d50804e194dc991,recorded_local_baseline_not_reexecuted_in_release
+2,usa_today,MAF,main_usa_today,42,test,84.28,89.78,16.60,main_usa_today,8969feec0f04c25606f3058675382e26e1f5a06400dfae0793de9b7b3dc3c672,local_checkpoint_saved_predictions_verified
+2,washington_post,HAMMER,,42,test,76.82,82.64,24.98,,ac8f693fada646c6ddb2e2aa135c417bdad302448c9bc1ecfde19dbae9baed9b,recorded_local_baseline_not_reexecuted_in_release
+2,washington_post,HAMMER++,,42,test,73.34,80.53,26.95,,eb0cbca143570c148660625e69746c4f4a2678e99716fc58a4d68a03819436ea,recorded_local_baseline_not_reexecuted_in_release
+2,washington_post,FKA-Owl,,,published intra-domain test,80.16,87.94,19.81,,,cited_publication_not_locally_reproduced
+2,washington_post,ALBEF,,42,test,74.31,82.44,26.03,,2fbe4a65a0eff2a7656693c49acf8535c0d5b37b061c5935215ecf2f848c0803,recorded_local_baseline_not_reexecuted_in_release
+2,washington_post,MAF,main_washington_post,42,test,82.21,87.70,18.58,main_washington_post,db4222258f69aba4b29ebfa8b53c363fb06ef861a8b17eeb2ab395637c808952,local_checkpoint_saved_predictions_verified
+3,bbc,MAF,main_bbc,42,test,86.00,91.16,14.54,main_bbc,4dbef5a2da2f1435c6f4dd2b4208e4289929bc7c783f36c3bd1b2dcaf124c824,local_checkpoint_saved_predictions_verified
+3,bbc,w/o MGR,ablation_without_mgr_complete,42,test,85.67,91.84,14.73,bbc_without_mgr_complete,6906e293227b45ed41ed36b90bc9ff361da8c27efd52ff1b55c83ecc2d6e8233,local_checkpoint_saved_predictions_verified
+3,bbc,w/o HAF,ablation_without_haf_complete,42,test,85.61,86.90,16.98,bbc_without_haf_complete,33f8509d9cbf7a457ee22333b20874deb78b110481eecbf4f4c6748a4baa7597,local_checkpoint_saved_predictions_verified
+3,bbc,w/o DAFO,ablation_without_dafo_complete,42,test,85.47,91.89,15.40,bbc_without_dafo_complete,ed952a091ecb1afb6b4b07871e100674d0d97512e1ac8df70ca50d07efc13aac,local_checkpoint_saved_predictions_verified

@@ -1,0 +1,56 @@
+{
+  "repository": "openai/clip-vit-base-patch16",
+  "base_revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+  "safetensors_revision": "fa726d97eb8b97497b912f1b8035b95fb86eb292",
+  "safetensors_origin": "refs/pr/7; pinned public conversion matching the audited local file",
+  "files": {
+    "vocab.json": {
+      "bytes": 961143,
+      "sha256": "3f0c4f7d2086b61b38487075278ea9ed04edb53a03cbb045b86c27190fa8fb69",
+      "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+      "url": "https://huggingface.co/openai/clip-vit-base-patch16/resolve/57c216476eefef5ab752ec549e440a49ae4ae5f3/vocab.json"
+    },
+    "tokenizer.json": {
+      "bytes": 2224003,
+      "sha256": "a83e0809aa4c3af7208b2df632a7a69668c6d48775b3c3fe4e1b1199d1f8b8f4",
+      "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+      "url": "https://huggingface.co/openai/clip-vit-base-patch16/resolve/57c216476eefef5ab752ec549e440a49ae4ae5f3/tokenizer.json"
+    },
+    "model.safetensors": {
+      "bytes": 598532764,
+      "sha256": "846bf12e84b91c2a65b44833a915241443b39356f1000ac1345c61d7bf8a209e",
+      "revision": "fa726d97eb8b97497b912f1b8035b95fb86eb292",
+      "url": "https://huggingface.co/openai/clip-vit-base-patch16/resolve/fa726d97eb8b97497b912f1b8035b95fb86eb292/model.safetensors"
+    },
+    "config.json": {
+      "bytes": 4104,
+      "sha256": "eaf1c9089a8553c913d27ea66407f8bfc2be9989c80c9f331ddb3d63d4c5e8ad",
+      "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+      "url": "https://huggingface.co/openai/clip-vit-base-patch16/resolve/57c216476eefef5ab752ec549e440a49ae4ae5f3/config.json"
+    },
+    "special_tokens_map.json": {
+      "bytes": 389,
+      "sha256": "f8c0d6c39aee3f8431078ef6646567b0aba7f2246e9c54b8b99d55c22b707cbf",
+      "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+      "url": "https://huggingface.co/openai/clip-vit-base-patch16/resolve/57c216476eefef5ab752ec549e440a49ae4ae5f3/special_tokens_map.json"
+    },
+    "tokenizer_config.json": {
+      "bytes": 905,
+      "sha256": "3f74b6a4d97fee70b3b96921a687fc5e3f2fb583f5f81e7c178c0c22281beade",
+      "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+      "url": "https://huggingface.co/openai/clip-vit-base-patch16/resolve/57c216476eefef5ab752ec549e440a49ae4ae5f3/tokenizer_config.json"
+    },
+    "merges.txt": {
+      "bytes": 524619,
+      "sha256": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+      "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+      "url": "https://huggingface.co/openai/clip-vit-base-patch16/resolve/57c216476eefef5ab752ec549e440a49ae4ae5f3/merges.txt"
+    },
+    "preprocessor_config.json": {
+      "bytes": 316,
+      "sha256": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd",
+      "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+      "url": "https://huggingface.co/openai/clip-vit-base-patch16/resolve/57c216476eefef5ab752ec549e440a49ae4ae5f3/preprocessor_config.json"
+    }
+  }
+}

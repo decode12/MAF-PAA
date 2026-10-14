@@ -1,0 +1,35 @@
+{
+  "scope": "8 Guardian samples only, no CUDA execution",
+  "source_indices": [
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    57
+  ],
+  "dataset_identity_and_input_tensors": "PASS",
+  "public_and_original_all_checkpoint_tensors": "PASS",
+  "checkpoint_epoch": 19,
+  "original_vs_public_fp32": {
+    "base_logit": 0.0,
+    "final_logit": 0.0,
+    "base_probability": 0.0,
+    "final_probability": 0.0,
+    "all_values_equal_including_infinities": true,
+    "nonfinite_final_logit_count": 0,
+    "max_finite_final_logit_difference": 0.0
+  },
+  "cpu_fp32_vs_archived_cuda_bf16": {
+    "base_logit": 2.1754438877105713,
+    "final_logit": 7.042317867279053,
+    "base_probability": 0.37896400690078735,
+    "final_probability": 0.8857120648026466
+  },
+  "canonical_cuda_bf16_reexecution": "NOT TESTED: occupied GPUs",
+  "numerical_agreement_with_archived_gpu": "UNRESOLVED",
+  "cpu_bf16_diagnostic": "Not supported by the public CPU engine; diagnostic yields nonfinite logits in 4/8 samples",
+  "limits": "Does not eliminate historical environment/kernel differences or historical image-byte changes"
+}

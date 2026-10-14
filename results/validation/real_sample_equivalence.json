@@ -1,0 +1,70 @@
+[
+  {
+    "variant": "full",
+    "strict_checkpoint_load": "PASS",
+    "initialized_nonclip_tensors_equal": true,
+    "samples": 4,
+    "eval": {
+      "max_output_difference": 0.0,
+      "loss_equal": true,
+      "rng_equal": true
+    },
+    "train": {
+      "max_output_difference": 0.0,
+      "loss_equal": true,
+      "rng_equal": true
+    },
+    "annotation_independent_prediction": "PASS"
+  },
+  {
+    "variant": "without_mgr_complete",
+    "strict_checkpoint_load": "PASS",
+    "initialized_nonclip_tensors_equal": true,
+    "samples": 4,
+    "eval": {
+      "max_output_difference": 0.0,
+      "loss_equal": true,
+      "rng_equal": true
+    },
+    "train": {
+      "max_output_difference": 0.0,
+      "loss_equal": true,
+      "rng_equal": true
+    },
+    "annotation_independent_prediction": "PASS"
+  },
+  {
+    "variant": "without_haf_complete",
+    "strict_checkpoint_load": "PASS",
+    "initialized_nonclip_tensors_equal": true,
+    "samples": 4,
+    "eval": {
+      "max_output_difference": 0.0,
+      "loss_equal": true,
+      "rng_equal": true
+    },
+    "train": {
+      "max_output_difference": 0.0,
+      "loss_equal": true,
+      "rng_equal": true
+    },
+    "annotation_independent_prediction": "PASS"
+  },
+  {
+    "variant": "without_dafo_complete",
+    "strict_checkpoint_load": "PASS",
+    "initialized_nonclip_tensors_equal": true,
+    "samples": 4,
+    "eval": {
+      "max_output_difference": 0.0,
+      "loss_equal": true,
+      "rng_equal": true
+    },
+    "train": {
+      "max_output_difference": 0.0,
+      "loss_equal": true,
+      "rng_equal": true
+    },
+    "annotation_independent_prediction": "PASS"
+  }
+]

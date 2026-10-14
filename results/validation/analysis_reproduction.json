@@ -1,0 +1,15 @@
+{
+  "input_file": "analysis_bbc_legacy.jsonl.gz",
+  "input_sha256": "1f6147521c4a641c7d94d8bedd8fb43f8734814a56ea29b6fda1f1de9ec8afcb",
+  "sample_count": 9370,
+  "threshold": 0.5,
+  "quartiles": "ascending selected gate, then original-metadata sample_id; numpy.array_split",
+  "gate_source": "paper-reconstructed",
+  "max_stored_vs_reconstructed_gate_difference": 5.960464477539063e-08,
+  "metadata_id_verification": "NOT REQUESTED",
+  "paper_quartile_match": "PASS",
+  "paper_case_match": "PASS",
+  "paper_analysis_checkpoint": "analysis_bbc; older five-epoch BBC checkpoint, distinct from the final 20-epoch main models",
+  "interpretation": "Descriptive single-seed analysis; no confidence intervals or model selection",
+  "plot_font": "DejaVu Serif"
+}
