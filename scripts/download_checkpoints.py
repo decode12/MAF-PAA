@@ -17,12 +17,13 @@ def sha256(path):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--name', default='all')
+    parser.add_argument('--name', default='paper', help='paper (seven current models), all (including historical model), or an artifact name')
     parser.add_argument('--output', type=Path, default=Path('checkpoints'))
     args = parser.parse_args()
     manifest = Path(__file__).resolve().parents[1] / 'checkpoints/manifest.json'
     records = json.loads(manifest.read_text())
-    records = [r for r in records if args.name == 'all' or r['name'] == args.name]
+    records = [r for r in records if args.name == 'all' or r['name'] == args.name
+               or (args.name == 'paper' and r['purpose'] == 'current_paper')]
     if not records:
         parser.error('Unknown checkpoint name')
     args.output.mkdir(parents=True, exist_ok=True)

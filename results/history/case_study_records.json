@@ -1,0 +1,57 @@
+{
+  "run_id": "analysis_bbc_legacy",
+  "checkpoint_name": "analysis_bbc",
+  "note": "Only identifiers and derived model outputs are included. Obtain captions and images from authorized original data sources. Original captions are not model inputs.",
+  "cases": [
+    {
+      "role": "success",
+      "record_id": 1462685,
+      "sample_id": "test:00009826",
+      "ground_truth_binary": 1,
+      "ground_truth_state": "Text-only",
+      "global_logit": -0.88671875,
+      "global_p_fake": 0.291015625,
+      "final_logit": 1.028771996498108,
+      "final_p_fake": 0.7366777062416077,
+      "predicted_class": "Fake",
+      "global_predicted_class": "Real",
+      "q": {
+        "Real": 0.35347065329551697,
+        "Text-only": 0.5965946316719055,
+        "Image-only": 0.017056826502084732,
+        "Joint": 0.03287788853049278
+      },
+      "pt": 0.56640625,
+      "pv": 0.033203125,
+      "agreement_a": 0.9601010680198669,
+      "reliability_g": 0.5727911591529846,
+      "evidence_logit": 2.390625,
+      "seed": 42
+    },
+    {
+      "role": "failure",
+      "record_id": 1550713,
+      "sample_id": "test:00001220",
+      "ground_truth_binary": 1,
+      "ground_truth_state": "Text-only",
+      "global_logit": -2.296875,
+      "global_p_fake": 0.09130859375,
+      "final_logit": -2.32507061958313,
+      "final_p_fake": 0.08906779438257217,
+      "predicted_class": "Real",
+      "global_predicted_class": "Real",
+      "q": {
+        "Real": 0.9232373833656311,
+        "Text-only": 0.005404659081250429,
+        "Image-only": 0.06846508383750916,
+        "Joint": 0.0028929056134074926
+      },
+      "pt": 0.00592041015625,
+      "pv": 0.08642578125,
+      "agreement_a": 0.9912775158882141,
+      "reliability_g": 0.9151844382286072,
+      "evidence_logit": -2.296875,
+      "seed": 42
+    }
+  ]
+}

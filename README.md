@@ -39,15 +39,17 @@ CUDA_VISIBLE_DEVICES=0 python scripts/evaluate.py --config configs/main.json \
   --output-dir outputs/bbc_test --device cuda
 ```
 
+Evaluation writes `test_metrics.json`, per-record `test_predictions.jsonl`, and `FREEZE.json` (checkpoint SHA-256 and protocol) into the output directory.
+
 For all four news sources and the three BBC module ablations:
 
 ```bash
-python scripts/download_checkpoints.py --name all
+python scripts/download_checkpoints.py --name paper
 CUDA_VISIBLE_DEVICES=0 bash scripts/reproduce_main.sh evaluate cuda
 CUDA_VISIBLE_DEVICES=0 bash scripts/reproduce_ablation.sh evaluate cuda
 ```
 
-The eight checkpoints are [public release assets](https://github.com/decode12/MAF-PAA/releases/tag/reproducibility-v1), approximately 4.7 GiB in total; the downloader verifies every SHA-256. The GPU wrappers run experiments sequentially on the selected device. For a small CPU check, use the single-model command with `--device cpu --limit 64` and a new output directory; this is not a full paper evaluation.
+The seven current-paper checkpoints are [public release assets](https://github.com/decode12/MAF-PAA/releases/tag/reproducibility-v1), approximately 4.0 GiB in total; the downloader verifies every SHA-256. The historical five-epoch model is excluded from `--name paper`. The GPU wrappers run experiments sequentially on the selected device. For a small CPU check, use the single-model command with `--device cpu --limit 64` and a new output directory; this is not a full paper evaluation.
 
 ## 4. Train and reproduce ablations
 
@@ -81,7 +83,16 @@ python scripts/reproduce_analysis.py --output-dir outputs/analysis --verify-pape
 | USA TODAY | 84.28 | 89.78 | 16.60 |
 | The Washington Post | 82.21 | 87.70 | 18.58 |
 
-Saved-prediction recomputation matches the reported rounding. **Fresh inference is a separate check:** CPU FP32 tests differed from archived CUDA BF16 predictions on 3 of 352 records, with a maximum probability difference of 0.886. Full CUDA reevaluation and complete retraining have not been repeated for this release; no numerical tolerance is claimed. Figures 3/4 use an earlier BBC checkpoint, and third-party baseline implementations are not bundled. See the [protocol and test evidence](docs/REPRODUCIBILITY.md) for these limitations and result provenance.
+Tables 2/3 recompute from the recorded scores. All **50,705** main-test predictions were also reproduced exactly by a full CUDA BF16 reevaluation with the public checkpoints. Figures 3/4 now use the same final BBC model as Table 2 (epoch 17), not the earlier five-epoch analysis. To reconstruct Figure 4 with its verified photos and verbatim captions from your local official dataset:
+
+```bash
+python scripts/reproduce_analysis.py --output-dir outputs/paper_figures \
+  --verify-paper --plot --data-root data/raw/DGM4
+```
+
+This exports Figure 3/4 PDF and PNG files, CSV statistics, and local case records. Figure 4 uses the paper's examples and predictions; its layout is generated, not a pixel-identical copy of manually arranged artwork.
+
+**Scope:** HAMMER, HAMMER++ and ALBEF are locally obtained baseline results; FKA-Owl values are cited from its paper. Their implementations are not bundled. CPU FP32 scores can differ materially from CUDA BF16; full retraining and fresh full-split CUDA ablation reevaluation have not been repeated for this release. See [protocol, provenance and tested scope](docs/REPRODUCIBILITY.md).
 
 ## Repository layout
 

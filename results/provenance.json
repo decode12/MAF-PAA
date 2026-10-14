@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot": "Current manuscript audited 2026-10-14",
+  "snapshot": "Latest submitted manuscript and final BBC figures, audited 2026-10-14",
   "main_result_protocol": "Fresh 20-epoch source-specific training, seed 42, first maximum validation ACC, test threshold 0.5",
   "source_code_sha256": "cd58e939e6a8022cb5f3a238300693e5a302d79a106568b93f20b84730fbb7e2",
   "source_original_commit": null,
@@ -47,13 +47,17 @@
       "training_history_original": "results/maf_fresh20/dual_20261010T040722_3688906/bbc/metrics.jsonl",
       "predictions": {
         "file": "results/predictions/main_bbc.jsonl.gz",
-        "sha256": "013db23cc0edc460463564a559372d4542cece4ea5a0fc568cb15dafc60cc489",
+        "sha256": "1ed8aa379e10b2a1cfc07a96f133618b64e71c873d01660078a3557ef408a9a2",
         "rows": 9370,
         "original_sha256": "004b08d38dfa98b99d68825aed5852c2965f1ece7eed2ec0bbf3ab48003e902c",
-        "source_filtered_row_order": true
+        "source_filtered_row_order": true,
+        "previous_public_sha256": "013db23cc0edc460463564a559372d4542cece4ea5a0fc568cb15dafc60cc489",
+        "diagnostics_source_sha256": "f3119f4039485cc6ab12584877c1331b57b4ed4e7f00123038d4cca5a1d699a9"
       },
       "status": "PASS: checkpoint hash, config, 20-epoch validation selection and saved prediction metrics",
-      "verification_scope": "CPU-only saved artifact and prediction verification; not a new model forward pass"
+      "verification_scope": "Full test CUDA BF16 reevaluation with the released checkpoint and portable implementation; all archived score fields reproduced exactly",
+      "released_checkpoint_sha256": "a911de9db336df47cc86047ad5fb7ce9c3ef53ff74674492d64af496cc09b87d",
+      "evaluation_evidence": "results/validation/cuda_inference.json"
     },
     {
       "run_id": "main_guardian",
@@ -96,13 +100,17 @@
       "training_history_original": "results/maf_fresh20/dual_20261010T040722_3688906/guardian/metrics.jsonl",
       "predictions": {
         "file": "results/predictions/main_guardian.jsonl.gz",
-        "sha256": "cd546be91896a0652f611310bd3a9b2520d02cf547f86302a858b776c61b5efb",
+        "sha256": "098d8701f12acac2596b83a726a5dc34c03b685d242988c9cf2b427675ca6f8e",
         "rows": 27028,
         "original_sha256": "492cfb1bbb972f42cac5feb32eec0cbdb6cf3a7662f8672b80d15c82430fbd60",
-        "source_filtered_row_order": true
+        "source_filtered_row_order": true,
+        "previous_public_sha256": "cd546be91896a0652f611310bd3a9b2520d02cf547f86302a858b776c61b5efb",
+        "diagnostics_source_sha256": "44ffaf4e44c743ddb64a5846ab3b656d49e48f32daf0e6fadc8c0e3ffb166662"
       },
       "status": "PASS: checkpoint hash, config, 20-epoch validation selection and saved prediction metrics",
-      "verification_scope": "CPU-only saved artifact and prediction verification; not a new model forward pass"
+      "verification_scope": "Full test CUDA BF16 reevaluation with the released checkpoint and portable implementation; all archived score fields reproduced exactly",
+      "released_checkpoint_sha256": "e2e90263fb3b54434bb435374345d0aac0f976336b23cb229de56967459553f9",
+      "evaluation_evidence": "results/validation/cuda_inference.json"
     },
     {
       "run_id": "main_usa_today",
@@ -145,13 +153,17 @@
       "training_history_original": "results/maf_fresh20/dual_20261010T040722_3688906/usa_today/metrics.jsonl",
       "predictions": {
         "file": "results/predictions/main_usa_today.jsonl.gz",
-        "sha256": "655f9ba95c9c4f606bef3a7652cc83c0ddbd0bb68cd1990d14d907baad615e44",
+        "sha256": "9af3a822d0eb53e620df103d2cbf6e3b1bf6401ce0d88ef8e6a88118b32ce370",
         "rows": 7926,
         "original_sha256": "3f0267de702868cfa08152358fbd93250ada2f080fafae756d9adc5424163a64",
-        "source_filtered_row_order": true
+        "source_filtered_row_order": true,
+        "previous_public_sha256": "655f9ba95c9c4f606bef3a7652cc83c0ddbd0bb68cd1990d14d907baad615e44",
+        "diagnostics_source_sha256": "969221be9058740bf0bc47caa169de5fceae5110c650d5fd0a729a696aae577b"
       },
       "status": "PASS: checkpoint hash, config, 20-epoch validation selection and saved prediction metrics",
-      "verification_scope": "CPU-only saved artifact and prediction verification; not a new model forward pass"
+      "verification_scope": "Full test CUDA BF16 reevaluation with the released checkpoint and portable implementation; all archived score fields reproduced exactly",
+      "released_checkpoint_sha256": "78444fcdbf3deb59a0b6a9dc6728659b27d6f0ef17fa90b4ceb32df5dd0ae0ac",
+      "evaluation_evidence": "results/validation/cuda_inference.json"
     },
     {
       "run_id": "main_washington_post",
@@ -194,13 +206,17 @@
       "training_history_original": "results/maf_fresh20/dual_20261010T040722_3688906/washington_post/metrics.jsonl",
       "predictions": {
         "file": "results/predictions/main_washington_post.jsonl.gz",
-        "sha256": "d8061132c42ded97afca187adf14312ac999d554aab9dd6d991cd235e282df75",
+        "sha256": "e7411f8a6ed6a3188143221fb735597442f5ba01f14bf5797576fe55bd9ab3af",
         "rows": 6381,
         "original_sha256": "b6a18525dc490853645c145e0c3b5b6598a64d148b50e71b583a3d24df2272a0",
-        "source_filtered_row_order": true
+        "source_filtered_row_order": true,
+        "previous_public_sha256": "d8061132c42ded97afca187adf14312ac999d554aab9dd6d991cd235e282df75",
+        "diagnostics_source_sha256": "967329d676dc88d2f83ab3f8fc2f35b6cf37356a4ae331d4b5e0cfcf25275311"
       },
       "status": "PASS: checkpoint hash, config, 20-epoch validation selection and saved prediction metrics",
-      "verification_scope": "CPU-only saved artifact and prediction verification; not a new model forward pass"
+      "verification_scope": "Full test CUDA BF16 reevaluation with the released checkpoint and portable implementation; all archived score fields reproduced exactly",
+      "released_checkpoint_sha256": "37e18098dbc4eca38b980c665034fabdeec5c5cdc71163d82a6c33132aa0bd3a",
+      "evaluation_evidence": "results/validation/cuda_inference.json"
     },
     {
       "run_id": "ablation_without_mgr_complete",
@@ -366,13 +382,13 @@
       "sampler": "historical default DataLoader generator, unlike the split-specific generator used in final 20-epoch runs",
       "precision": "CUDA bfloat16",
       "predictions": {
-        "file": "results/predictions/analysis_bbc_legacy.jsonl.gz",
+        "file": "results/history/analysis_bbc_legacy.jsonl.gz",
         "sha256": "1f6147521c4a641c7d94d8bedd8fb43f8734814a56ea29b6fda1f1de9ec8afcb",
         "rows": 9370,
         "original_sha256": "ab77d0426a1272a47f08e4107db61bb5807f312dec3321b96213baff7b7ead92",
         "source_filtered_row_order": true
       },
-      "use": "Figures 3 and 4 only; excluded from Tables 2 and 3",
+      "use": "Historical development analysis only; not used in current Tables 2/3 or Figures 3/4",
       "status": "PASS: original checkpoint SHA and first-maximum-validation-ACC selection independently checked",
       "verification_scope": "CPU-only saved artifact verification; not a new model forward pass"
     }
@@ -426,7 +442,6 @@
   },
   "limitations": [
     "Current manuscript reports seed42 fresh20 main results only; historical seeds43/44 are not replicas of current20epoch protocol.",
-    "Figures3/4 use the historical5epoch BBC model, not the Table2 checkpoint.",
     "Current Table2 HAMMER++ USA row remains the original 76.87/82.22/25.89; later20epoch continuation result is 76.52/82.77/25.23 and must not be silently substituted.",
     "No current paper cross-domain experiment: historical transfer results must not be presented as current main results."
   ],
@@ -575,7 +590,7 @@
   "paper_evidence": [
     {
       "file": "paper/main.pdf",
-      "sha256": "cd66357140ef7ce3e84ff7a12135973c143c442ebd7a14884ee45491ae4ce25b"
+      "sha256": "1513f3952d671b5ff6ef9fba94eac26e3d6fe1855d61ab285a2b8920f32d807d"
     },
     {
       "file": "paper/results/V1_MAIN_COMPARISON_TABLE.tex",
@@ -587,10 +602,26 @@
     },
     {
       "file": "paper/sections/04_experiments.tex",
-      "sha256": "ad8dfa6de754c1405b7c3cc6b925d8a67a1e9c7258c171599ee42e1d52094ddb"
+      "sha256": "8fcbab6746fe4b743b9646f2f63f835e7f748b00f419cf920be59b45aedf7e7d"
+    },
+    {
+      "file": "paper/figures/fig3.pdf",
+      "sha256": "d126e3fb2b2f3ef4a3692eae3ac12d6b7cd01d777e033cc732c3b99fd6a1d01d"
+    },
+    {
+      "file": "paper/figures/fig4.pdf",
+      "sha256": "b381e60bd3aeca040f1f35fc954ac0380d3460d4edceb5e189ef2b3e8fd19794"
     }
   ],
   "paper_numeric_comparison": "PASS: all 24 Table 2/Table 3 rows match the current manuscript to two decimal places",
-  "analysis_statistics_verification": "PASS: all Figure 3 quartile counts, state accuracies, correction/harm rates and net changes, and both Figure 4 case probabilities/agreement/reliability values independently matched the sanitized historical prediction bundle",
-  "prediction_privacy_check": "PASS: all gzip prediction records use the restricted identifier/label/derived-score schema; no image, caption, raw annotation, image path, private home path or temporary path is included"
+  "analysis_statistics_verification": "Current Figures 3/4 use main_bbc, epoch17 from a20epoch run, seed42, full9370test predictions. Derived statistics and case records are checked by scripts/reproduce_analysis.py --verify-paper.",
+  "prediction_privacy_check": "PASS: all gzip prediction records use the restricted identifier/label/derived-score schema; no image, caption, raw annotation, image path, private home path or temporary path is included",
+  "analysis_protocol": {
+    "checkpoint_name": "main_bbc",
+    "checkpoint_sha256": "a911de9db336df47cc86047ad5fb7ce9c3ef53ff74674492d64af496cc09b87d",
+    "predictions": "results/predictions/main_bbc.jsonl.gz",
+    "gate": "stored fusion_gate",
+    "quartiles": "sort ascending by (fusion_gate, sample_id), then numpy.array_split",
+    "case_records": "results/case_study_records.json"
+  }
 }

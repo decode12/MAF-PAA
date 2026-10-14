@@ -1,0 +1,112 @@
+{
+  "date": "2026-10-14",
+  "branch": "review/final-paper-reproducibility-20261014",
+  "environment": "Existing isolated Python3.11.14/PyTorch2.5.1 environment; pip check and CLI imports PASS",
+  "data_preparation": "PASS: original metadata/source fingerprints, all12source/split counts, all image paths",
+  "anonymous_public_checkpoint_download": {
+    "name": "main_bbc",
+    "bytes": 622679694,
+    "sha256": "a911de9db336df47cc86047ad5fb7ce9c3ef53ff74674492d64af496cc09b87d",
+    "status": "PASS"
+  },
+  "public_release_assets": "PASS: all8names and sizes via unauthenticated API; all7current local files reverified by download script",
+  "tables": {
+    "paper_rows": 24,
+    "maf_saved_prediction_rows": 8,
+    "maf_prediction_files": 7,
+    "all_numeric_cells": "PASS",
+    "boldface": "PASS",
+    "baseline_metric_hashes": "PASS",
+    "published_fkaowl_source": "https://arxiv.org/html/2403.01988v2#S4.T2"
+  },
+  "selection_history": "PASS: first maximum validation ACC among20epochs for all7current models",
+  "figure3_4": {
+    "input_file": "main_bbc.jsonl.gz",
+    "input_sha256": "1ed8aa379e10b2a1cfc07a96f133618b64e71c873d01660078a3557ef408a9a2",
+    "sample_count": 9370,
+    "threshold": 0.5,
+    "quartiles": "ascending (stored fusion_gate, sample_id), then numpy.array_split",
+    "reference_checkpoint": "main_bbc",
+    "reference_checkpoint_sha256": "a911de9db336df47cc86047ad5fb7ce9c3ef53ff74674492d64af496cc09b87d",
+    "paper_predictions_match": true,
+    "paper_quartile_match": true,
+    "paper_case_match": true,
+    "interpretation": "Descriptive within-model comparison; not a causal HAF ablation",
+    "case_data_verification": "PASS: metadata version, original pair, image SHA-256 and dimensions",
+    "plot_font": "DejaVu Serif"
+  },
+  "cpu_inference": {
+    "samples": 16,
+    "split": "test",
+    "scope": "partial",
+    "checkpoint": "main_bbc",
+    "precision": "FP32",
+    "batch_size": 16,
+    "finite": "PASS",
+    "classification_disagreements": 0,
+    "final_probability_max_abs_difference": 0.0005736947059631348
+  },
+  "model_smoke_tests": [
+    {
+      "variant": "full",
+      "checkpoint": "main_bbc",
+      "selected_epoch": 17,
+      "samples": 8,
+      "split": "train",
+      "device": "cpu",
+      "precision": "FP32",
+      "strict_checkpoint_load": "PASS",
+      "finite_forward_and_loss": "PASS",
+      "module_definition_checks": "PASS",
+      "optimizer_step": "PASS"
+    },
+    {
+      "variant": "without_mgr_complete",
+      "checkpoint": "bbc_without_mgr_complete",
+      "selected_epoch": 19,
+      "samples": 8,
+      "split": "train",
+      "device": "cpu",
+      "precision": "FP32",
+      "strict_checkpoint_load": "PASS",
+      "finite_forward_and_loss": "PASS",
+      "module_definition_checks": "PASS",
+      "optimizer_step": "NOT TESTED"
+    },
+    {
+      "variant": "without_haf_complete",
+      "checkpoint": "bbc_without_haf_complete",
+      "selected_epoch": 15,
+      "samples": 8,
+      "split": "train",
+      "device": "cpu",
+      "precision": "FP32",
+      "strict_checkpoint_load": "PASS",
+      "finite_forward_and_loss": "PASS",
+      "module_definition_checks": "PASS",
+      "optimizer_step": "NOT TESTED"
+    },
+    {
+      "variant": "without_dafo_complete",
+      "checkpoint": "bbc_without_dafo_complete",
+      "selected_epoch": 10,
+      "samples": 8,
+      "split": "train",
+      "device": "cpu",
+      "precision": "FP32",
+      "strict_checkpoint_load": "PASS",
+      "finite_forward_and_loss": "PASS",
+      "module_definition_checks": "PASS",
+      "optimizer_step": "NOT TESTED"
+    }
+  ],
+  "legacy_input_rejected": "PASS",
+  "paper_files_unchanged": "PASS",
+  "not_executed": [
+    "Full20epoch retraining",
+    "New full CUDA ablation evaluation",
+    "New GPU inference during this cleanup",
+    "Third-party baseline reexecution",
+    "Redownload of the entire10.7GB dataset"
+  ]
+}

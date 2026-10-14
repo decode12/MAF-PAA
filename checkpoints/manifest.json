@@ -12,7 +12,8 @@
     "public_download_status": "VERIFIED_PUBLIC",
     "source": "bbc",
     "seed": 42,
-    "public_download_verified_at_utc": "2026-10-14T03:44:00.690217+00:00"
+    "public_download_verified_at_utc": "2026-10-14T03:44:00.690217+00:00",
+    "purpose": "current_paper"
   },
   {
     "name": "main_guardian",
@@ -27,7 +28,8 @@
     "public_download_status": "VERIFIED_PUBLIC",
     "source": "guardian",
     "seed": 42,
-    "public_download_verified_at_utc": "2026-10-14T03:44:55.981657+00:00"
+    "public_download_verified_at_utc": "2026-10-14T03:44:55.981657+00:00",
+    "purpose": "current_paper"
   },
   {
     "name": "main_usa_today",
@@ -42,7 +44,8 @@
     "public_download_status": "VERIFIED_PUBLIC",
     "source": "usa_today",
     "seed": 42,
-    "public_download_verified_at_utc": "2026-10-14T03:45:52.070977+00:00"
+    "public_download_verified_at_utc": "2026-10-14T03:45:52.070977+00:00",
+    "purpose": "current_paper"
   },
   {
     "name": "main_washington_post",
@@ -57,7 +60,8 @@
     "public_download_status": "VERIFIED_PUBLIC",
     "source": "washington_post",
     "seed": 42,
-    "public_download_verified_at_utc": "2026-10-14T03:46:57.347617+00:00"
+    "public_download_verified_at_utc": "2026-10-14T03:46:57.347617+00:00",
+    "purpose": "current_paper"
   },
   {
     "name": "bbc_without_mgr_complete",
@@ -72,7 +76,8 @@
     "public_download_status": "VERIFIED_PUBLIC",
     "source": "bbc",
     "seed": 42,
-    "public_download_verified_at_utc": "2026-10-14T03:47:52.192399+00:00"
+    "public_download_verified_at_utc": "2026-10-14T03:47:52.192399+00:00",
+    "purpose": "current_paper"
   },
   {
     "name": "bbc_without_haf_complete",
@@ -87,7 +92,8 @@
     "public_download_status": "VERIFIED_PUBLIC",
     "source": "bbc",
     "seed": 42,
-    "public_download_verified_at_utc": "2026-10-14T03:48:49.739611+00:00"
+    "public_download_verified_at_utc": "2026-10-14T03:48:49.739611+00:00",
+    "purpose": "current_paper"
   },
   {
     "name": "bbc_without_dafo_complete",
@@ -102,7 +108,8 @@
     "public_download_status": "VERIFIED_PUBLIC",
     "source": "bbc",
     "seed": 42,
-    "public_download_verified_at_utc": "2026-10-14T03:49:42.661580+00:00"
+    "public_download_verified_at_utc": "2026-10-14T03:49:42.661580+00:00",
+    "purpose": "current_paper"
   },
   {
     "name": "analysis_bbc",
@@ -117,6 +124,7 @@
     "public_download_status": "VERIFIED_PUBLIC",
     "source": "bbc",
     "seed": 42,
-    "public_download_verified_at_utc": "2026-10-14T03:50:36.015865+00:00"
+    "public_download_verified_at_utc": "2026-10-14T03:50:36.015865+00:00",
+    "purpose": "historical_only"
   }
 ]

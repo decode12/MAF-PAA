@@ -1,17 +1,10 @@
 #!/usr/bin/env python3
-"""Recompute Fig.3 quartiles and Fig.4 case predictions from saved MAF outputs.
+"""Reproduce the current BBC Figures 3/4 from the final main_bbc predictions.
 
-The paper's qualitative analysis uses the separately archived five-epoch BBC
-checkpoint, not the 20-epoch models in the main/ablation tables. This script can
-also analyze new evaluations, but does not relabel them as the published data.
-
-A sample_id is split:NNNNNNNN, using the zero-based row in the ORIGINAL full
-split metadata. It is neither a source-filtered row number nor a news ID (news
-IDs can occur repeatedly). Equal reliability scores are ordered by sample_id;
-quartiles then follow numpy.array_split. The paper plotting script reconstructed
-g in float32 using its algebraically equivalent agreement formula. That mode
-is retained by default; --gate-source stored uses actual saved forward gates.
-No thresholds or models are tuned.
+Quartiles use stored forward-pass gates, ascending (fusion_gate, sample_id),
+then numpy.array_split. A sample_id indexes the original full split metadata,
+not a source-filtered row or a nonunique news ID. All decisions use 0.5.
+Use --data-root to recover the Figure 4 images/captions from official data.
 """
 import argparse
 import csv
@@ -24,23 +17,6 @@ import re
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-PAPER_CASES = [
-    {"role": "success", "record_id": "1462685", "sample_id": "test:00009826"},
-    {"role": "failure", "record_id": "1550713", "sample_id": "test:00001220"},
-]
-PAPER_QUARTILES = [
-    {"n": 2343, "fixed": 167, "harmed": 97, "state_accuracy": 74.30644472897994},
-    {"n": 2343, "fixed": 9, "harmed": 4, "state_accuracy": 82.62910798122066},
-    {"n": 2342, "fixed": 1, "harmed": 0, "state_accuracy": 88.12980358667805},
-    {"n": 2342, "fixed": 0, "harmed": 0, "state_accuracy": 92.10076857386849},
-]
-PAPER_CASE_NUMBERS = {
-    "test:00009826": {"base_probability": 0.291015625, "final_probability": 0.7366777062416077,
-                       "q_text": 0.5965946316719055, "fusion_gate": 0.5727911591529846},
-    "test:00001220": {"base_probability": 0.09130859375, "final_probability": 0.08906779438257217,
-                       "q_real": 0.9232373833656311, "cross_head_agreement": 0.9912775158882141},
-}
-
 
 def load_predictions(path):
     path = Path(path)
@@ -80,18 +56,8 @@ def load_predictions(path):
     return rows
 
 
-def quartile_statistics(rows, gate_source="paper-reconstructed"):
-    q = np.asarray([r["state_prob"] for r in rows], dtype=np.float32)
-    pt = np.asarray([r["p_text"] for r in rows], dtype=np.float32)
-    pv = np.asarray([r["p_image"] for r in rows], dtype=np.float32)
-    # Match the original figure parser's float32 operation order exactly.
-    agreement = np.float32(1) - np.float32(.5) * (np.abs(q[:, 1] + q[:, 3] - pt)
-                                                 + np.abs(q[:, 2] + q[:, 3] - pv))
-    reconstructed = np.clip(agreement * q.max(axis=1), 0, 1)
-    saved = np.asarray([r["fusion_gate"] for r in rows])
-    selected = reconstructed if gate_source == "paper-reconstructed" else saved
-    augmented = [dict(row, analysis_gate=float(value)) for row, value in zip(rows, selected)]
-    ordered = sorted(augmented, key=lambda row: (row["analysis_gate"], row["sample_id"]))
+def quartile_statistics(rows):
+    ordered = sorted(rows, key=lambda row: (row["fusion_gate"], row["sample_id"]))
     result = []
     for quartile, indices in enumerate(np.array_split(np.arange(len(ordered)), 4), 1):
         group = [ordered[int(i)] for i in indices]
@@ -104,13 +70,13 @@ def quartile_statistics(rows, gate_source="paper-reconstructed"):
         count = len(group)
         result.append({
             "quartile": quartile, "n": count,
-            "g_min": float(group[0]["analysis_gate"]), "g_max": float(group[-1]["analysis_gate"]),
+            "g_min": float(group[0]["fusion_gate"]), "g_max": float(group[-1]["fusion_gate"]),
             "state_accuracy": 100 * float((state == labels).mean()),
             "fixed": fixed, "harmed": harmed,
             "fixed_rate": 100 * fixed / count, "harmed_rate": 100 * harmed / count,
             "net_pp": 100 * (fixed - harmed) / count,
         })
-    return result, float(np.max(np.abs(saved - reconstructed)))
+    return result
 
 
 def case_predictions(rows, cases):
@@ -143,7 +109,7 @@ def case_predictions(rows, cases):
 def write_csv(path, rows):
     fields = list(dict.fromkeys(key for row in rows for key in row))
     with Path(path).open("w", newline="", encoding="utf-8") as stream:
-        writer = csv.DictWriter(stream, fieldnames=fields)
+        writer = csv.DictWriter(stream, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -160,7 +126,7 @@ def draw(quartiles, destination, font):
                          "pdf.fonttype": 42, "ps.fonttype": 42})
     fig, axes = plt.subplots(1, 2, figsize=(8.4, 4.7))
     x = np.arange(4)
-    labels = [f"Q{r['quartile']}\n[{r['g_min']:.3f},\n{r['g_max']:.3f}]" for r in quartiles]
+    labels = [f"Q{r['quartile']}" for r in quartiles]
     for axis in axes:
         axis.set_xlim(-.5, 3.5)
         axis.set_xticks(x, labels)
@@ -189,74 +155,163 @@ def draw(quartiles, destination, font):
     fig.subplots_adjust(left=.085, right=.985, top=.95, bottom=.30, wspace=.38)
     for axis, title in zip(axes, ["(a) Auxiliary prediction reliability", "(b) Prediction corrections and harms"]):
         axis.text(.5, -.34, title, transform=axis.transAxes, ha="center", va="top", fontsize=14)
-    fig.savefig(destination)
+    fig.savefig(destination.with_suffix(".pdf"), bbox_inches="tight")
+    fig.savefig(destination.with_suffix(".png"), dpi=300, bbox_inches="tight")
+    plt.close(fig)
+
+
+def recover_cases(data_root, cases, predictions, destination):
+    """Verify exact original/manipulated pairs and export authorized local data."""
+    import difflib
+    import shutil
+    from PIL import Image
+    root = data_root.resolve()
+    metadata_path = root / 'metadata/test.json'
+    expected = json.loads((ROOT / 'datasets/dgm4_assets.json').read_text())
+    # Verify the original metadata version before interpreting row identifiers.
+    metadata_hash = hashlib.sha256(metadata_path.read_bytes()).hexdigest()
+    if metadata_hash != expected['files']['metadata/test.json']['sha256']:
+        raise ValueError('Test metadata SHA-256 does not match the pinned DGM4 version')
+    metadata = json.loads(metadata_path.read_text())
+    scores = {r['sample_id']: r for r in predictions}
+    result = []
+    for case in cases:
+        sid = case['sample_id']
+        score = scores[sid]
+        if score['status'] != 'FOUND':
+            raise ValueError(f'Cannot render missing case {sid}')
+        manipulated = metadata[int(sid.split(':')[1])]
+        original = metadata[int(case['original_sample_id'].split(':')[1])]
+        if not (str(manipulated['id']) == str(original['id']) == str(case['record_id'])
+                and manipulated['image'] == original['image']
+                and original['fake_cls'] == 'orig'
+                and manipulated['fake_cls'] in ('text_swap', 'text_attribute')):
+            raise ValueError(f'Original/manipulated record pairing failed for {sid}')
+        parts = Path(manipulated['image']).parts
+        path = root.joinpath(*(parts[1:] if parts[0] == 'DGM4' else parts)).resolve()
+        if not path.is_relative_to(root):
+            raise ValueError('Image path escapes the dataset directory')
+        if hashlib.sha256(path.read_bytes()).hexdigest() != case['image_sha256']:
+            raise ValueError(f'Image SHA-256 mismatch for {sid}')
+        with Image.open(path) as im:
+            if im.size != (case['native_width'], case['native_height']):
+                raise ValueError(f'Unexpected native image dimensions for {sid}')
+        image_name = f"{case['role']}_{case['record_id']}{path.suffix}"
+        shutil.copyfile(path, destination / image_name)
+        before, after = original['text'].split(), manipulated['text'].split()
+        edits = [{'original': ' '.join(before[i:j]), 'manipulated': ' '.join(after[k:l])}
+                 for tag, i, j, k, l in difflib.SequenceMatcher(a=before, b=after).get_opcodes()
+                 if tag != 'equal']
+        result.append(dict(score, original_sample_id=case['original_sample_id'],
+                           image_file=image_name, original_caption=original['text'],
+                           manipulated_caption=manipulated['text'], edits=edits))
+    (destination / 'cases_with_captions.json').write_text(json.dumps(result, indent=2) + '\n')
+    return result
+
+
+def draw_cases(cases, destination, font):
+    """Render the same verified examples; paper artwork is manually arranged."""
+    import textwrap
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    from PIL import Image
+    plt.rcParams.update({'font.family': font, 'font.size': 12, 'pdf.fonttype': 42})
+    fig = plt.figure(figsize=(11.5, 6.4))
+    for i, case in enumerate(cases):
+        left = .04 + i * .50
+        fig.text(left + .21, .97, f"({chr(97+i)}) {case['role'].capitalize()} case",
+                 ha='center', va='top', fontsize=15, fontweight='bold')
+        axis = fig.add_axes([left, .53, .42, .40])
+        with Image.open(destination / case['image_file']) as im:
+            axis.imshow(im)
+        axis.axis('off')
+        y = .50
+        for label, key in [('Original caption (reference only)', 'original_caption'),
+                           ('Manipulated caption (model input)', 'manipulated_caption')]:
+            fig.text(left, y, label, fontsize=12, fontweight='bold', va='top')
+            lines = textwrap.wrap(case[key], width=53)
+            fig.text(left, y-.035, '\n'.join(lines), fontsize=12, va='top', linespacing=1.35)
+            y -= .035 + .033 * len(lines) + .02
+        final = 'Fake' if case['final_prediction'] else 'Real'
+        base = 'Fake' if case['base_prediction'] else 'Real'
+        lines = [f"Ground truth: {'Fake' if case['label'] else 'Real'} (Text-only)",
+                 f"Global p(Fake): {case['base_probability']:.3f} ({base})",
+                 f"MAF p(Fake): {case['final_probability']:.3f} ({final})",
+                 f"Text-only probability: {case['q_text']:.3f}   Reliability: {case['fusion_gate']:.3f}"]
+        fig.text(left, y, '\n'.join(lines), fontsize=12, va='top', linespacing=1.5)
+    for ext in ('pdf', 'png'):
+        fig.savefig(destination / f'Figure4.{ext}', dpi=300, bbox_inches='tight')
     plt.close(fig)
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--predictions", type=Path, default=ROOT / "results/predictions/analysis_bbc_legacy.jsonl.gz")
-    parser.add_argument("--output-dir", type=Path, default=ROOT / "outputs/analysis")
-    parser.add_argument("--cases-json", type=Path, help="Optional list, or object containing cases with role, record_id and sample_id")
-    parser.add_argument("--metadata", type=Path, help="Optional original full split metadata to verify raw sample IDs against news IDs")
-    parser.add_argument("--plot", action="store_true", help="Also export a two-panel PDF; requires matplotlib")
-    parser.add_argument("--font", default="DejaVu Serif", help="A locally installed font; no proprietary fonts are bundled")
-    parser.add_argument("--gate-source", choices=["paper-reconstructed", "stored"], default="paper-reconstructed",
-                        help="Match the published float32 parser, or sort using actual saved forward gates")
-    parser.add_argument("--verify-paper", action="store_true", help="Fail if quartiles or case numbers differ from the published analysis")
+    parser.add_argument('--predictions', type=Path, default=ROOT / 'results/predictions/main_bbc.jsonl.gz')
+    parser.add_argument('--output-dir', type=Path, default=ROOT / 'outputs/analysis')
+    parser.add_argument('--data-root', type=Path, help='Official DGM4 directory; enables verified case-image/caption export')
+    parser.add_argument('--plot', action='store_true', help='Export Figure 3 PDF/PNG; also Figure 4 when --data-root is supplied')
+    parser.add_argument('--font', default='DejaVu Serif', help='Use an installed font, e.g. Times New Roman')
+    parser.add_argument('--verify-paper', action='store_true', help='Verify current BBC predictions, statistics and case outputs')
     args = parser.parse_args(argv)
+    if args.plot:
+        from matplotlib.font_manager import findfont, FontProperties
+        try:
+            findfont(FontProperties(family=args.font), fallback_to_default=False)
+        except ValueError:
+            parser.error(f"Font {args.font!r} is not installed; omit --font to use DejaVu Serif")
     rows = load_predictions(args.predictions)
-    metadata_verified = False
-    if args.metadata:
-        metadata = json.loads(args.metadata.read_text())
-        for row in rows:
-            index = int(row["sample_id"].split(":")[1])
-            if index >= len(metadata) or str(metadata[index]["id"]) != str(row.get("id", row.get("news_id"))):
-                raise ValueError(f"Original metadata does not match {row['sample_id']}")
-        metadata_verified = True
-    cases = PAPER_CASES
-    if args.cases_json:
-        cases = json.loads(args.cases_json.read_text())
-        if isinstance(cases, dict):
-            cases = cases["cases"]
-    quartiles, gate_difference = quartile_statistics(rows, args.gate_source)
-    case_rows = case_predictions(rows, cases)
-    quarter_match = all(
-        actual["n"] == expected["n"] and actual["fixed"] == expected["fixed"]
-        and actual["harmed"] == expected["harmed"]
-        and abs(actual["state_accuracy"] - expected["state_accuracy"]) < 1e-9
-        for actual, expected in zip(quartiles, PAPER_QUARTILES)
-    )
-    by_case = {row["sample_id"]: row for row in case_rows}
-    case_match = all(
-        sid in by_case and by_case[sid]["status"] == "FOUND"
-        and all(abs(by_case[sid][key] - value) < 1e-9 for key, value in expected.items())
-        for sid, expected in PAPER_CASE_NUMBERS.items()
-    )
+    reference = json.loads((ROOT / 'results/case_study_records.json').read_text())
+    quartiles = quartile_statistics(rows)
+    cases = case_predictions(rows, reference['cases'])
+    with (ROOT / 'results/haf_quartiles.csv').open() as stream:
+        expected_quartiles = list(csv.DictReader(stream))
+    quarter_match = len(quartiles) == len(expected_quartiles) and all(
+        abs(actual[key] - float(expected[key])) < 1e-9
+        for actual, expected in zip(quartiles, expected_quartiles) for key in actual)
+    case_match = all(actual['status'] == 'FOUND' and all(
+        actual[key] == expected[key] if key in ('role', 'record_id', 'sample_id')
+        else abs(actual[key] - expected[key]) < 1e-9
+        for key in ('role', 'record_id', 'sample_id', 'label', 'state', 'base_probability',
+                    'final_probability', 'q_real', 'q_text', 'q_image', 'q_joint',
+                    'cross_head_agreement', 'fusion_gate'))
+        for actual, expected in zip(cases, reference['cases']))
+    input_match = None
+    if args.verify_paper:
+        frozen = load_predictions(ROOT / 'results/predictions/main_bbc.jsonl.gz')
+        score_keys = ('sample_id', 'id', 'label', 'state', 'base_probability', 'final_probability',
+                      'state_prob', 'p_text', 'p_image', 'cross_head_agreement', 'fusion_gate',
+                      'state_coeff', 'evidence_logit')
+        input_match = len(rows) == len(frozen) and all(
+            all(a[k] == b[k] for k in score_keys) for a, b in zip(rows, frozen))
+    if args.verify_paper and not (quarter_match and case_match and input_match):
+        raise SystemExit('Input differs from the current main_bbc paper predictions; no outputs were relabeled or tuned')
     manifest = {
-        "input_file": args.predictions.name,
-        "input_sha256": hashlib.sha256(args.predictions.read_bytes()).hexdigest(),
-        "sample_count": len(rows), "threshold": .5,
-        "quartiles": "ascending selected gate, then original-metadata sample_id; numpy.array_split",
-        "gate_source": args.gate_source,
-        "max_stored_vs_reconstructed_gate_difference": gate_difference,
-        "metadata_id_verification": "PASS" if metadata_verified else "NOT REQUESTED",
-        "paper_quartile_match": "PASS" if quarter_match else "DIFFERENT INPUT RESULTS",
-        "paper_case_match": "PASS" if case_match else "DIFFERENT OR MISSING INPUT RESULTS",
-        "paper_analysis_checkpoint": "analysis_bbc; older five-epoch BBC checkpoint, distinct from the final 20-epoch main models",
-        "interpretation": "Descriptive single-seed analysis; no confidence intervals or model selection",
-        "plot_font": args.font if args.plot else None,
+        'input_file': args.predictions.name,
+        'input_sha256': hashlib.sha256(args.predictions.read_bytes()).hexdigest(),
+        'sample_count': len(rows), 'threshold': .5,
+        'quartiles': 'ascending (stored fusion_gate, sample_id), then numpy.array_split',
+        'reference_checkpoint': reference['checkpoint_name'],
+        'reference_checkpoint_sha256': reference['checkpoint_sha256'],
+        'paper_predictions_match': input_match,
+        'paper_quartile_match': quarter_match, 'paper_case_match': case_match,
+        'interpretation': 'Descriptive within-model comparison; not a causal HAF ablation',
+        'case_data_verification': 'NOT REQUESTED',
+        'plot_font': args.font if args.plot else None,
     }
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    write_csv(args.output_dir / "quartile_statistics.csv", quartiles)
-    write_csv(args.output_dir / "case_predictions.csv", case_rows)
-    (args.output_dir / "analysis_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
+    write_csv(args.output_dir / 'quartile_statistics.csv', quartiles)
+    write_csv(args.output_dir / 'case_predictions.csv', cases)
+    if args.data_root:
+        recovered = recover_cases(args.data_root, reference['cases'], cases, args.output_dir)
+        manifest['case_data_verification'] = 'PASS: metadata version, original pair, image SHA-256 and dimensions'
+        if args.plot:
+            draw_cases(recovered, args.output_dir, args.font)
     if args.plot:
-        draw(quartiles, args.output_dir / "reliability_analysis.pdf", args.font)
+        draw(quartiles, args.output_dir / 'Figure3.pdf', args.font)
+    (args.output_dir / 'analysis_manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
     print(json.dumps(manifest, indent=2))
-    if args.verify_paper and not (quarter_match and case_match):
-        raise SystemExit("Prediction input does not reproduce the published analysis; it was not relabeled or tuned")
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
