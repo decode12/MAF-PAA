@@ -1,9 +1,0 @@
-table,run_id,split,sample_count,ACC_percent,AUC_percent,EER_percent,status
-2,main_bbc,test,9370,86.00,91.16,14.54,PASS_SAVED_PREDICTIONS
-2,main_guardian,test,27028,89.64,94.49,10.66,PASS_SAVED_PREDICTIONS
-2,main_usa_today,test,7926,84.28,89.78,16.60,PASS_SAVED_PREDICTIONS
-2,main_washington_post,test,6381,82.21,87.70,18.58,PASS_SAVED_PREDICTIONS
-3,main_bbc,test,9370,86.00,91.16,14.54,PASS_SAVED_PREDICTIONS
-3,ablation_without_mgr_complete,test,9370,85.67,91.84,14.73,PASS_SAVED_PREDICTIONS
-3,ablation_without_haf_complete,test,9370,85.61,86.90,16.98,PASS_SAVED_PREDICTIONS
-3,ablation_without_dafo_complete,test,9370,85.47,91.89,15.40,PASS_SAVED_PREDICTIONS

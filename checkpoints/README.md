@@ -27,4 +27,4 @@ python scripts/download_checkpoints.py --name all
 
 Model binaries are release assets and remain ignored by Git; they are not packed into the source history. No Git LFS setup is needed. The downloader verifies the manifest SHA-256 before accepting a downloaded or existing file.
 
-**Numerical limitation:** accessible, intact checkpoints do not establish that new inference reproduces the archived CUDA BF16 predictions. The release's CPU smoke tests observed three differing classifications across 352 test records. Full-split CUDA BF16 inference and complete retraining remain untested during release preparation; see [the release report](../PAA_RELEASE_REPORT.md).
+For executed tests and the unresolved CPU-versus-archived-GPU differences, see the [reproducibility protocol](../docs/REPRODUCIBILITY.md).
